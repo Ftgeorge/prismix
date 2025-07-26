@@ -1,0 +1,12 @@
+.transparentHeader {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.opaqueHeader {
+  background: rgba(255,255,255,0.97) !important;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  backdrop-filter: blur(12px) !important;
+}

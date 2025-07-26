@@ -11,14 +11,14 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="font-sans bg-neutral-50 min-h-screen flex flex-col">
-
-      <HeroSection />
+      <LandingNavBar />
+      <div id="home"><HeroSection /></div>
       <QuickStats />
-      <FeaturedProjectsSlider />
-      <ProjectCategories />
-      <CitizenVoices />
-      <NewsletterSection />
-      <FooterSection />
+      <div id="projects"><FeaturedProjectsSlider /></div>
+      <div id="categories"><ProjectCategories /></div>
+      <div id="voices"><CitizenVoices /></div>
+      <div id="newsletter"><NewsletterSection /></div>
+      <div id="contact"><FooterSection /></div>
     </div>
   );
 }

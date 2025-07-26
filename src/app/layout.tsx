@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/auth-context";
-import { LandingNavBar } from "@/components/landing/navbar";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -26,7 +25,6 @@ export default function RootLayout({
         className={`${montserrat.variable} antialiased`}
       >
         <AuthProvider>
-          <LandingNavBar />
           {children}
         </AuthProvider>
       </body>

@@ -1,11 +1,42 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
+import { useEffect, useState } from "react";
+import styles from './navbar.module.css';
 export function LandingNavBar() {
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Section highlight logic
+      const sectionIds = ["home", "projects", "categories", "voices", "newsletter", "contact"];
+      let current = "home";
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom > 120) {
+            current = id;
+            break;
+          }
+        }
+      }
+      setActiveSection(current);
+      // Navbar background logic
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="w-full sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60 shadow-sm">
+    <header className={`w-full sticky top-0 z-50 transition-all duration-300 ${activeSection === 'home' ? styles.transparentHeader : styles.opaqueHeader}`}>
       <nav className="px-40 mx-auto flex items-center justify-between py-4">
         {/* Logo Section - Left */}
         <div className="flex items-center w-80 flex-shrink-0">
@@ -31,30 +62,28 @@ export function LandingNavBar() {
         <div className="flex justify-center mx-auto">
           <ul className="hidden md:flex items-center gap-1">
             {[
-              { href: "#about", label: "About" },
+              { href: "#home", label: "Home" },
               { href: "#projects", label: "Projects" },
-              { href: "#reports", label: "Reports" },
-              { href: "#contact", label: "Contact" },
-              { href: "/portal", label: "Dashboard" }
+              { href: "#categories", label: "Categories" },
+              { href: "#voices", label: "Voices" },
+              { href: "#newsletter", label: "Newsletter" },
+              { href: "#contact", label: "Contact" }
             ].map((item) => (
               <li key={item.href}>
-                {item.href.startsWith("/") ? (
-                  <Link
-                    href={item.href}
-                    className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-800 hover:bg-slate-50 rounded-lg transition-all duration-200 relative group"
-                  >
-                    {item.label}
-                    <span className="absolute inset-x-4 bottom-0 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></span>
-                  </Link>
-                ) : (
-                  <a
-                    href={item.href}
-                    className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-800 hover:bg-slate-50 rounded-lg transition-all duration-200 relative group"
-                  >
-                    {item.label}
-                    <span className="absolute inset-x-4 bottom-0 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></span>
-                  </a>
-                )}
+                <a
+                  href={item.href}
+                  onClick={e => {
+                    e.preventDefault();
+                    const el = document.querySelector(item.href);
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 relative group ${activeSection === item.href.slice(1) ? 'text-blue-800 bg-blue-50 font-bold' : 'text-slate-700 hover:text-blue-800 hover:bg-slate-50'}`}
+                >
+                  {item.label}
+                  <span className={`absolute inset-x-4 bottom-0 h-0.5 bg-blue-600 transition-transform duration-200 origin-left ${activeSection === item.href.slice(1) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                </a>
               </li>
             ))}
           </ul>
