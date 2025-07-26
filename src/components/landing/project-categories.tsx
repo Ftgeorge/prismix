@@ -5,16 +5,16 @@ const categories = [
   { 
     icon: Building2, 
     title: "Roads & Infrastructure", 
-    color: "bg-blue-100 text-blue-800",
-    hoverColor: "from-blue-600/10 to-blue-400/5",
+    color: "bg-primary/10 text-primary/80",
+    hoverColor: "from-primary/10 to-primary/5",
     description: "Building the backbone of modern society with roads, bridges, and essential infrastructure.",
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop"
   },
   { 
     icon: Hospital, 
     title: "Health & Hospitals", 
-    color: "bg-emerald-100 text-emerald-700",
-    hoverColor: "from-emerald-600/10 to-emerald-400/5",
+    color: "bg-primary/10 text-primary/80",
+    hoverColor: "from-primary/10 to-primary/5",
     description: "Advancing healthcare facilities and medical infrastructure for community wellness.",
     image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=400&h=300&fit=crop"
   },

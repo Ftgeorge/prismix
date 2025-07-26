@@ -55,15 +55,15 @@ const mockNotifications: Notification[] = [
 function iconForType(type: string) {
   switch (type) {
     case "update":
-      return <Bell className="w-4 h-4 text-blue-600" />;
+      return <Bell className="w-4 h-4 text-primary/80" />;
     case "success":
-      return <CheckCircle className="w-4 h-4 text-emerald-600" />;
+      return <CheckCircle className="w-4 h-4 text-primary/70" />;
     case "info":
-      return <Info className="w-4 h-4 text-blue-500" />;
+      return <Info className="w-4 h-4 text-primary/60" />;
     case "warning":
       return <AlertTriangle className="w-4 h-4 text-amber-600" />;
     default:
-      return <Bell className="w-4 h-4 text-blue-600" />;
+      return <Bell className="w-4 h-4 text-primary/80" />;
   }
 }
 
@@ -105,20 +105,23 @@ export default function Notifications() {
   };
 
   return (
-    <div className="mx-auto p-6 bg-gray-50 min-h-screen">
+    <div className="mx-auto p-6 2xl:p-8 xl:p-6 lg:p-5 md:p-4 bg-gray-50 min-h-screen">
       {/* Header */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-2">
-          <h1 className="text-3xl font-semibold text-gray-900">Notifications</h1>
-          <div className="flex items-center gap-2">
+      <div className="mb-8 2xl:mb-8 xl:mb-6 lg:mb-5 md:mb-4">
+        <div className="flex items-center justify-between mb-6 2xl:mb-6 xl:mb-5 lg:mb-4 md:mb-3">
+          <h1 className="text-2xl 2xl:text-2xl xl:text-xl lg:text-lg md:text-base font-bold text-blue-900 flex items-center gap-2">
+            Notifications
             {unreadCount > 0 && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                {unreadCount} unread
+              <span className="ml-2 inline-flex items-center px-2 2xl:px-2 xl:px-2 lg:px-1.5 md:px-1 py-0.5 rounded-full text-xs 2xl:text-xs xl:text-xs lg:text-xs md:text-[11px] font-semibold bg-blue-100 text-blue-700">
+                {unreadCount}
               </span>
             )}
-          </div>
+          </h1>
+          <button className="text-gray-500 hover:text-blue-700 transition-colors" aria-label="More actions">
+            <MoreVertical className="w-6 h-6 2xl:w-6 2xl:h-6 xl:w-5 xl:h-5 lg:w-5 lg:h-5 md:w-4 md:h-4" />
+          </button>
         </div>
-        <p className="text-gray-600">Stay updated with your project activities and system alerts</p>
+        <p className="text-gray-600 2xl:text-sm xl:text-sm lg:text-xs md:text-[11px]">Stay updated with your project activities and system alerts</p>
       </div>
 
       {/* Action Bar */}
@@ -159,15 +162,16 @@ export default function Notifications() {
       <Card className="bg-white shadow-sm border-0">
         <div className="divide-y divide-gray-100">
           {/* Select All Header */}
-          <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
-            <label className="flex items-center cursor-pointer">
+          <div className="flex items-center gap-4 2xl:gap-4 xl:gap-3 lg:gap-3 md:gap-2 mb-2 2xl:mb-2 xl:mb-2 lg:mb-1 md:mb-1 px-2 2xl:px-2 xl:px-2 lg:px-1 md:px-1">
+            <label className="flex items-center gap-2 cursor-pointer select-none">
               <input
                 type="checkbox"
-                checked={selected.length === notifications.length && notifications.length > 0}
+                checked={selected.length === notifications.length}
                 onChange={selectAll}
-                className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                className="accent-primary w-4 h-4 2xl:w-4 2xl:h-4 xl:w-4 xl:h-4 lg:w-3.5 lg:h-3.5 md:w-3 md:h-3"
+                aria-label="Select all notifications"
               />
-              <span className="ml-3 text-sm font-medium text-gray-700">
+              <span className="ml-3 text-sm 2xl:text-sm xl:text-xs lg:text-xs md:text-[11px] font-medium text-gray-700">
                 {selected.length > 0 ? `${selected.length} selected` : 'Select all'}
               </span>
             </label>
@@ -194,7 +198,7 @@ export default function Notifications() {
                     type="checkbox"
                     checked={selected.includes(notification.id)}
                     onChange={() => toggleSelect(notification.id)}
-                    className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                    className="mt-1 h-4 w-4 text-primary/80 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                   />
 
                   {/* Icon */}
@@ -215,7 +219,7 @@ export default function Notifications() {
                           )}
                         </div>
                         <p
-                          className={`text-sm cursor-pointer hover:text-blue-600 transition-colors ${
+                          className={`text-sm cursor-pointer hover:text-primary/80 transition-colors ${
                             !notification.read ? 'text-gray-900 font-medium' : 'text-gray-700'
                           }`}
                           onClick={() => markAsRead(notification.id)}

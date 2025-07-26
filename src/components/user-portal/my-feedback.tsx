@@ -38,9 +38,9 @@ const feedbacks = [
 function getStatusIcon(status: string) {
   switch (status) {
     case "Resolved":
-      return <CheckCircle className="w-4 h-4 text-emerald-600" />;
+      return <CheckCircle className="w-4 h-4 text-primary/80" />;
     case "In Progress":
-      return <Clock className="w-4 h-4 text-blue-600" />;
+      return <Clock className="w-4 h-4 text-primary/80" />;
     case "Open":
       return <AlertCircle className="w-4 h-4 text-amber-600" />;
     default:
@@ -51,9 +51,9 @@ function getStatusIcon(status: string) {
 function getStatusBadgeStyle(status: string) {
   switch (status) {
     case "Resolved":
-      return "bg-emerald-100 text-emerald-800 border-emerald-200";
+      return "bg-primary/10 text-primary/80 border-primary/30";
     case "In Progress":
-      return "bg-blue-100 text-blue-800 border-blue-200";
+      return "bg-primary/10 text-primary/80 border-primary/30";
     case "Open":
       return "bg-amber-100 text-amber-800 border-amber-200";
     default:
@@ -99,7 +99,7 @@ export function MyFeedback() {
           <Card className="p-4 bg-white border-0 shadow-sm">
             <div className="flex items-center">
               <div className="p-2 bg-blue-100 rounded-lg">
-                <MessageSquare className="w-5 h-5 text-blue-600" />
+                <MessageSquare className="w-5 h-5 text-primary/80" />
               </div>
               <div className="ml-3">
                 <p className="text-sm font-medium text-gray-600">Total Feedback</p>
@@ -110,7 +110,7 @@ export function MyFeedback() {
           <Card className="p-4 bg-white border-0 shadow-sm">
             <div className="flex items-center">
               <div className="p-2 bg-emerald-100 rounded-lg">
-                <CheckCircle className="w-5 h-5 text-emerald-600" />
+                <CheckCircle className="w-5 h-5 text-primary/80" />
               </div>
               <div className="ml-3">
                 <p className="text-sm font-medium text-gray-600">Resolved</p>
@@ -218,7 +218,7 @@ export function MyFeedback() {
                           day: 'numeric' 
                         })}
                       </p>
-                      <button className="text-xs text-blue-600 hover:text-blue-800 font-medium">
+                      <button className="text-xs text-primary/80 hover:text-blue-800 font-medium">
                         View Details
                       </button>
                     </div>

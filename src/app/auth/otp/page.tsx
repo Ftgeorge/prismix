@@ -38,7 +38,7 @@ export default function OTPPage() {
             <Image src="/logo.png" alt='prism logo' className='w-full h-full' width={100} height={100}/>
           </div>
         </div>
-        <h1 className="text-2xl font-bold text-[#1A2A4E] mb-1 text-center">Verify your account</h1>
+        <h1 className="text-2xl font-bold text-[#008753] mb-1 text-center">Verify your account</h1>
         <h2 className="text-base font-normal text-[#4B5563] mb-6 text-center">
           Enter the 6-digit code sent to your email
         </h2>
@@ -53,7 +53,7 @@ export default function OTPPage() {
                 maxLength={1}
                 value={digit}
                 onChange={e => handleChange(e.target.value, idx)}
-                className="w-12 h-12 text-center text-2xl border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A4E]/50 focus:border-transparent"
+                className="w-12 h-12 text-center text-2xl border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008753]/50 focus:border-transparent"
                 autoFocus={idx === 0}
               />
             ))}
@@ -61,7 +61,7 @@ export default function OTPPage() {
           {error && <div className="text-red-500 text-sm text-center">{error}</div>}
           <button
             type="submit"
-            className="w-full bg-[#1A2A4E] text-white h-10 px-4 rounded-lg hover:bg-[#17213D] transition-colors duration-200"
+            className="w-full bg-[#008753] text-white h-10 px-4 rounded-lg hover:bg-[#17213D] transition-colors duration-200"
           >
             Verify
           </button>
@@ -70,7 +70,7 @@ export default function OTPPage() {
           Didn't receive a code?{' '}
           <button
             type="button"
-            className="text-[#1A2A4E] hover:underline font-medium"
+            className="text-[#008753] hover:underline font-medium"
             onClick={() => alert('Resend OTP logic would go here')}
           >
             Resend OTP

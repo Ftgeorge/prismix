@@ -287,12 +287,11 @@ export default function FeaturedProjectsSlider() {
                         </div>
 
                         <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-full rounded-md border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 font-medium transition-all duration-200"
+                          size="lg"
+                          className="w-full items-center rounded-full bg-[#008753] border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-white font-medium transition-all duration-200"
                         >
                           <span className="text-sm mr-2">View Details</span>
-                          <ArrowRight className="w-4 h-4" />
+                          <ChevronRight className="w-4 h-4" />
                         </Button>
                       </div>
                     </div>
@@ -310,7 +309,7 @@ export default function FeaturedProjectsSlider() {
                 key={i}
                 onClick={() => setCurrentIndex(i)}
                 className={`h-2 rounded-full transition-all duration-200 ${i === currentIndex
-                  ? 'bg-gray-800 w-6'
+                  ? 'bg-[#008753] w-6'
                   : 'bg-gray-300 w-2 hover:bg-gray-400'
                   }`}
               />

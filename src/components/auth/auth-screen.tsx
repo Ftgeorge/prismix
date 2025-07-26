@@ -86,9 +86,9 @@ function GuestEntry() {
   const router = useRouter();
   return (
     <div className="flex flex-col gap-4 items-center mt-6">
-      <Badge className="bg-emerald-700 text-white text-base px-6 py-2 rounded-full shadow">Guest Mode</Badge>
+      <Badge className="bg-primary text-white text-base px-6 py-2 rounded-full shadow">Guest Mode</Badge>
       <p className="text-gray-700 text-center text-base font-serif italic">Explore the portal as a guest. Some features will be limited.</p>
-      <Button className="rounded-full px-8 py-4 bg-blue-900 hover:bg-blue-950 text-white text-lg font-semibold shadow-md mt-2" onClick={() => { guest(); router.push("/portal"); }}>
+      <Button className="rounded-full px-8 py-4 bg-primary/90 hover:bg-primary text-white text-lg font-semibold shadow-md mt-2" onClick={() => { guest(); router.push("/portal"); }}>
         Continue as Guest
       </Button>
     </div>

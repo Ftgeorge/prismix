@@ -28,7 +28,7 @@ export default function ForgotPasswordPage() {
             <Image src="/logo.png" alt='prism logo' className='w-full h-full' width={100} height={100}/>
           </div>
         </div>
-        <h1 className="text-2xl font-bold text-[#1A2A4E] mb-1 text-center">Forgot Password?</h1>
+        <h1 className="text-2xl font-bold text-[#008753] mb-1 text-center">Forgot Password?</h1>
         <h2 className="text-base font-normal text-[#4B5563] mb-6 text-center">
           Enter your email or phone number to receive a verification code
         </h2>
@@ -42,14 +42,14 @@ export default function ForgotPasswordPage() {
               id="identifier"
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A4E]/50 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008753]/50 focus:border-transparent"
               required
             />
           </div>
           {error && <div className="text-red-500 text-sm text-center">{error}</div>}
           <button
             type="submit"
-            className="w-full bg-[#1A2A4E] text-white h-10 px-4 rounded-lg hover:bg-[#17213D] transition-colors duration-200"
+            className="w-full bg-[#008753] text-white h-10 px-4 rounded-lg hover:bg-[#17213D] transition-colors duration-200"
           >
             Send OTP
           </button>
@@ -58,7 +58,7 @@ export default function ForgotPasswordPage() {
           Remembered your password?{' '}
           <button
             type="button"
-            className="text-[#1A2A4E] hover:underline font-medium"
+            className="text-[#008753] hover:underline font-medium"
             onClick={() => router.push('/auth/signin')}
           >
             Back to Sign in

@@ -39,22 +39,22 @@ export function ProfileSettings() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-8 px-4">
+    <div className="min-h-screen bg-slate-50 py-8 2xl:py-8 xl:py-7 lg:py-6 md:py-5 px-4 2xl:px-4 xl:px-3 lg:px-3 md:px-2">
       <div className="max-w-4xl mx-auto">
         {/* Header Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-blue-900 mb-2">Profile Settings</h1>
-          <p className="text-gray-600">Manage your account settings and preferences</p>
+        <div className="mb-8 2xl:mb-8 xl:mb-6 lg:mb-5 md:mb-4">
+          <h1 className="text-2xl 2xl:text-2xl xl:text-xl lg:text-lg md:text-base font-bold text-primary mb-2">Profile Settings</h1>
+          <p className="text-gray-600 2xl:text-base xl:text-sm lg:text-xs md:text-xs">Manage your account settings and preferences</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Sidebar - Avatar & Trust Info */}
           <div className="lg:col-span-1">
-            <Card className="p-6 bg-white border border-blue-100 shadow-sm">
+            <Card className="p-6 bg-white border border-primary/20 shadow-sm">
               <div className="flex flex-col items-center text-center">
                 {/* Avatar Section */}
                 <div className="relative mb-6">
-                  <div className="w-32 h-32 rounded-full border-4 border-blue-100 overflow-hidden bg-gray-100">
+                  <div className="w-32 h-32 rounded-full border-4 border-primary/20 overflow-hidden bg-gray-100">
                     {avatar ? (
                       <img src={avatar} alt="Profile" className="w-full h-full object-cover" />
                     ) : (
@@ -106,9 +106,9 @@ export function ProfileSettings() {
           <div className="lg:col-span-2">
             <div className="space-y-6">
               {/* Personal Information */}
-              <Card className="p-6 bg-white border border-blue-100 shadow-sm">
+              <Card className="p-6 bg-white border border-primary/20 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <User className="w-5 h-5 text-blue-600 mr-2" />
+                  <User className="w-5 h-5 text-primary/80 mr-2" />
                   <h2 className="text-lg font-semibold text-gray-900">Personal Information</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -160,9 +160,9 @@ export function ProfileSettings() {
               </Card>
 
               {/* Security Settings */}
-              <Card className="p-6 bg-white border border-blue-100 shadow-sm">
+              <Card className="p-6 bg-white border border-primary/20 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <Lock className="w-5 h-5 text-blue-600 mr-2" />
+                  <Lock className="w-5 h-5 text-primary/80 mr-2" />
                   <h2 className="text-lg font-semibold text-gray-900">Security</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -197,9 +197,9 @@ export function ProfileSettings() {
               </Card>
 
               {/* Notification Preferences */}
-              <Card className="p-6 bg-white border border-blue-100 shadow-sm">
+              <Card className="p-6 bg-white border border-primary/20 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <Bell className="w-5 h-5 text-blue-600 mr-2" />
+                  <Bell className="w-5 h-5 text-primary/80 mr-2" />
                   <h2 className="text-lg font-semibold text-gray-900">Notification Preferences</h2>
                 </div>
                 <div className="space-y-4">

@@ -8,13 +8,13 @@ export default function MetricsDashboard() {
           <MetricCard 
             value="91.3%" 
             label="Budget Utilization" 
-            bgColor="bg-gradient-to-br from-[#2563eb] to-[#1d4ed8]" 
+            bgColor="bg-gradient-to-br from-[#008753] to-[#008753]" 
             textColor="text-white"
           />
           <MetricCard 
             value="134" 
             label="Ongoing Projects" 
-            bgColor="bg-gradient-to-br from-[#10b981] to-[#059669]" 
+            bgColor="bg-gradient-to-br from-[#00875360] to-[#00875390]" 
             textColor="text-white"
           />
           <MetricCard 

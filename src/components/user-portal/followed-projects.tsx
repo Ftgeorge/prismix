@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Bell, BellOff, MapPin, Building2, Calendar, TrendingUp } from "lucide-react";
 
@@ -120,7 +121,7 @@ const followedProjects = [
 ];
 
 const statusColors = {
-  Ongoing: "bg-blue-50 text-blue-700 border-blue-200",
+  Ongoing: "bg-primary/10 text-primary/80 border-primary/30",
   Completed: "bg-green-50 text-green-700 border-green-200",
   Delayed: "bg-orange-50 text-orange-700 border-orange-200",
   Planning: "bg-purple-50 text-purple-700 border-purple-200",
@@ -131,7 +132,7 @@ const categoryColors = {
   Infrastructure: "bg-cyan-50 text-cyan-700",
   Energy: "bg-amber-50 text-amber-700",
   Industrial: "bg-slate-50 text-slate-700",
-  Technology: "bg-emerald-50 text-emerald-700",
+  Technology: "bg-primary/10 text-primary/80",
 } as const;
 
 type StatusType = keyof typeof statusColors;
@@ -177,12 +178,15 @@ export default function FollowedProjects() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-8">
       <div className="mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-black mb-2">Followed Projects</h1>
+        <div className="max-w-7xl mx-auto py-8 2xl:py-8 xl:py-7 lg:py-6 md:py-5 px-4 2xl:px-4 xl:px-3 lg:px-3 md:px-2">
+          <h1 className="text-2xl 2xl:text-2xl xl:text-xl lg:text-lg md:text-base font-bold text-blue-900 mb-6 2xl:mb-6 xl:mb-5 lg:mb-4 md:mb-3 flex items-center gap-3 2xl:gap-3 xl:gap-2 lg:gap-2 md:gap-1.5">
+            <Star className="w-7 h-7 2xl:w-7 2xl:h-7 xl:w-6 xl:h-6 lg:w-5 lg:h-5 md:w-4 md:h-4 text-yellow-400" />
+            Followed Projects
+          </h1>
           <p className="text-gray-600/70">Track your favorite infrastructure projects across Nigeria</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 2xl:gap-6 xl:gap-5 lg:gap-4 md:gap-3">
           {projects.map((proj, i) => (
             <Card key={i} className="group py-0 gap-0 h-full flex flex-col overflow-hidden border-0 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-[1.02]">
               {/* Project Image + Badges */}

@@ -3,11 +3,19 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSubmit = () => {
     if (email) {
@@ -18,8 +26,30 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="w-full py-20 bg-[#1A2A4E]">
-      <div className="max-w-2xl mx-auto px-6 text-center">
+    <section className="relative w-full py-20 overflow-hidden">
+      {/* Static Background (if parallax causes issues) */}
+      <div className="absolute inset-0">
+        <Image 
+          src="/newsletter.jpg"
+          alt="Newsletter background"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+          quality={75}
+        />
+      </div>
+      
+      {/* Green Overlay */}
+      <div 
+        className="absolute inset-0 z-10"
+        style={{
+          backgroundColor: "rgba(0, 135, 83, 0.85)"
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-20 max-w-2xl mx-auto px-6 text-center">
         {/* Header */}
         <h2 className="text-3xl font-bold text-center mb-8 text-white">
           Stay Updated
@@ -43,7 +73,7 @@ export default function NewsletterSection() {
           <Button
             onClick={handleSubmit}
             disabled={isSubscribed}
-            className="px-6 py-3 bg-[#1A2A4E] text-white font-medium rounded-full transition-colors duration-200 disabled:opacity-50"
+            className="px-6 py-3 bg-[#008753] text-white font-medium rounded-full transition-colors duration-200 disabled:opacity-50"
           >
             {isSubscribed ? (
               <span className="flex items-center gap-2">

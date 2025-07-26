@@ -82,11 +82,11 @@ export default function ActivityFeed() {
   const getIcon = (type:any) => {
     switch (type) {
       case "followed":
-        return <Star className="w-4 h-4 text-emerald-500" />;
+        return <Star className="w-4 h-4 text-primary/80" />;
       case "feedback":
-        return <MessageCircle className="w-4 h-4 text-blue-500" />;
+        return <MessageCircle className="w-4 h-4 text-primary/80" />;
       case "update":
-        return <Bell className="w-4 h-4 text-blue-900" />;
+        return <Bell className="w-4 h-4 text-primary" />;
       case "milestone":
         return <CheckCircle className="w-4 h-4 text-green-600" />;
       case "mention":
@@ -135,7 +135,7 @@ export default function ActivityFeed() {
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <button className="p-2 text-blue-900 hover:bg-blue-50 rounded-lg transition-colors">
+              <button className="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors">
                 <Settings className="w-4 h-4" />
               </button>
               {unreadCount > 0 && (
@@ -160,7 +160,7 @@ export default function ActivityFeed() {
               <button
                 key={filterType}
                 onClick={() => setFilter(filterType)}
-                className={`px-2 py-1 rounded-md text-xs transition-colors ${
+                className={`px-2 py-1 rounded-md text-xs 2xl:text-xs xl:text-xs lg:text-xs md:text-xs transition-colors ${
                   filter === filterType
                     ? "bg-blue-900 text-white"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
@@ -174,7 +174,7 @@ export default function ActivityFeed() {
                 type="checkbox"
                 checked={showUnreadOnly}
                 onChange={(e) => setShowUnreadOnly(e.target.checked)}
-                className="rounded text-blue-900 w-3 h-3"
+                className="rounded text-primary w-3 h-3"
               />
               <span className="text-xs text-gray-600">Unread only</span>
             </label>
@@ -197,7 +197,7 @@ export default function ActivityFeed() {
                 <div
                   key={item.id}
                   className={`p-4 hover:bg-gray-50 transition-colors cursor-pointer ${
-                    !item.read ? "bg-blue-50" : ""
+                    !item.read ? "bg-primary/10" : ""
                   }`}
                   onClick={() => !item.read && markAsRead(item.id)}
                 >

@@ -12,7 +12,19 @@ module.exports = {
         'section-header': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.01em' }], // 40px
       },
       colors: {
-        'section-header': '#1A2A4E', // Deep blue, matches brand/dark text
+        'primary': {
+          DEFAULT: '#008753',
+          50: '#e0f7ee',
+          100: '#b3ebd3',
+          200: '#80ddb5',
+          300: '#4dcf97',
+          400: '#26c47f',
+          500: '#008753', // Main
+          600: '#00774a',
+          700: '#005e3a',
+          800: '#004729',
+          900: '#002d19',
+        },
       },
     },
   },

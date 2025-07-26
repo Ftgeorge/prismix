@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm 2xl:text-sm xl:text-base lg:text-sm md:text-xs font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
@@ -22,10 +22,10 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "rounded-md has-[>svg]:px-4",
-        icon: "size-9",
+        default: "h-9 px-4 py-2 2xl:h-9 2xl:px-4 2xl:py-2 xl:h-8 xl:px-4 xl:py-2 lg:h-8 lg:px-3 lg:py-1.5 md:h-7 md:px-2.5 md:py-1 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 2xl:h-8 2xl:px-3 xl:h-7 xl:px-2.5 lg:h-7 lg:px-2 md:h-6 md:px-1.5 has-[>svg]:px-2.5",
+        lg: "rounded-md 2xl:h-10 2xl:px-6 xl:h-9 xl:px-5 lg:h-8 lg:px-4 md:h-7 md:px-3 has-[>svg]:px-4",
+        icon: "size-9 2xl:size-9 xl:size-8 lg:size-7 md:size-6",
       },
     },
     defaultVariants: {

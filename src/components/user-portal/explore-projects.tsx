@@ -105,14 +105,13 @@ function getStatusColor(status: string) {
   return statusColors[status as StatusType] || "bg-gray-100 text-gray-600 border-gray-200";
 }
 
-
 export default function ExploreProjects() {
   const [search, setSearch] = useState("");
   const [projects, setProjects] = useState(mockProjects);
   const [filter, setFilter] = useState("All");
   const [showFilters, setShowFilters] = useState<false | 'category'>(false);
 
-  const handleFollow = (id: any) => {
+  const handleFollow = (id: number) => {
     setProjects((prev) =>
       prev.map((p) =>
         p.id === id ? { ...p, followed: !p.followed } : p
@@ -135,123 +134,101 @@ export default function ExploreProjects() {
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-slate-900 mb-3">
-              Explore Development Projects
-            </h1>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Discover and follow infrastructure projects transforming communities across Nigeria
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto py-8 px-4">
+          <h1 className="text-2xl font-bold text-primary mb-6 flex items-center gap-3">
+            <Search className="w-7 h-7 text-primary/70" />
+            Explore Projects
+          </h1>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Discover and follow infrastructure projects transforming communities across Nigeria
+          </p>
+        </div>
 
-          {/* Hero-style Search Bar */}
-          <div className="max-w-4xl mx-auto mt-12">
-            <div className="bg-white rounded-full shadow-2xl overflow-hidden backdrop-blur-sm bg-white/95">
-              <div className="flex flex-col lg:flex-row">
-                {/* Search Input */}
-                <div className="flex-1 relative">
-                  <div className="p-6 border-b lg:border-b-0">
-                    <div className="relative">
-                      <Search className="size-4 text-gray-400 absolute left-0 top-1/2 transform -translate-y-1/2" />
-                      <input
-                        type="text"
-                        placeholder="Search projects, contractors..."
-                        value={search}
-                        onChange={e => setSearch(e.target.value)}
-                        className="pl-7 w-full text-gray-800 placeholder:text-gray-400 bg-transparent border-0 focus:outline-none text-sm"
-                      />
-                    </div>
+        {/* Hero-style Search Bar */}
+        <div className="max-w-7xl mx-auto pb-8 px-4">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="flex flex-col lg:flex-row">
+              {/* Search Input */}
+              <div className="flex-1 relative">
+                <div className="p-6">
+                  <div className="relative">
+                    <Search className="w-4 h-4 text-gray-400 absolute left-0 top-1/2 transform -translate-y-1/2" />
+                    <input
+                      type="text"
+                      placeholder="Search projects, contractors..."
+                      value={search}
+                      onChange={e => setSearch(e.target.value)}
+                      className="pl-7 w-full text-gray-800 placeholder:text-gray-400 bg-transparent border-0 focus:outline-none text-sm"
+                    />
                   </div>
-                </div>
-                <div className="border-r border-gray-200 h-10 my-auto" />
-                {/* Category Filter */}
-                <div className="relative">
-                  <div className="p-6">
-                    <button
-                      onClick={() => setShowFilters(showFilters === 'category' ? false : 'category')}
-                      className="flex items-center justify-between w-full text-left"
-                    >
-                      <span className="text-gray-800 text-sm truncate pr-2">
-                        {filter === "All" ? "Any category" : filter}
-                      </span>
-                      <ChevronDown className={`size-3 text-gray-600 flex-shrink-0 transition-transform duration-200 ${showFilters === 'category' ? 'rotate-180' : ''}`} />
-                    </button>
-                  </div>
-                  {showFilters === 'category' && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-200 z-30 overflow-hidden max-h-60 overflow-y-auto">
-                      {categories.map((cat) => (
-                        <button
-                          key={cat}
-                          onClick={() => {
-                            setFilter(cat);
-                            setShowFilters(false);
-                          }}
-                          className="w-full px-6 py-3 text-left text-gray-800 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-100 last:border-b-0"
-                        >
-                          {cat}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <div className="border-r border-gray-200 h-10 my-auto" />
-                {/* Location Filter (mock for now) */}
-                <div className="relative">
-                  <div className="p-6">
-                    <button
-                      disabled
-                      className="flex items-center justify-between w-full text-left opacity-60 cursor-not-allowed"
-                    >
-                      <span className="text-gray-800 text-sm truncate pr-2">Any location</span>
-                      <ChevronDown className="w-4 h-4 text-gray-600 flex-shrink-0" />
-                    </button>
-                  </div>
-                </div>
-                <div className="border-r border-gray-200 h-10 my-auto" />
-                {/* Year Filter (mock for now) */}
-                <div className="relative">
-                  <div className="p-6 border-b lg:border-b-0 border-gray-200">
-                    <button
-                      disabled
-                      className="flex items-center justify-between w-full text-left opacity-60 cursor-not-allowed"
-                    >
-                      <span className="text-gray-800 text-sm truncate pr-2">Any time</span>
-                      <ChevronDown className="w-4 h-4 text-gray-600 flex-shrink-0" />
-                    </button>
-                  </div>
-                </div>
-                {/* Search Button */}
-                <div className="flex items-center justify-center p-2">
-                  <button className="bg-gradient-to-br from-[#10b981] to-[#059669] text-white p-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                    <Search className="w-6 h-6" />
-                  </button>
                 </div>
               </div>
+              
+              <div className="hidden lg:block border-r border-gray-200" />
+              
+              {/* Category Filter */}
+              <div className="relative">
+                <div className="p-6">
+                  <button
+                    onClick={() => setShowFilters(showFilters === 'category' ? false : 'category')}
+                    className="flex items-center justify-between w-full text-left min-w-[150px]"
+                  >
+                    <span className="text-gray-800 text-sm truncate pr-2">
+                      {filter === "All" ? "Any category" : filter}
+                    </span>
+                    <ChevronDown className={`w-4 h-4 text-gray-600 flex-shrink-0 transition-transform duration-200 ${showFilters === 'category' ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+                {showFilters === 'category' && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 z-30 overflow-hidden max-h-60 overflow-y-auto">
+                    {categories.map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => {
+                          setFilter(cat);
+                          setShowFilters(false);
+                        }}
+                        className="w-full px-6 py-3 text-left text-gray-800 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-100 last:border-b-0"
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              <div className="hidden lg:block border-r border-gray-200" />
+              
+              {/* Search Button */}
+              <div className="flex items-center justify-center p-4">
+                <button className="bg-gradient-to-br from-primary/80 to-primary text-white p-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                  <Search className="w-5 h-5" />
+                </button>
+              </div>
             </div>
-            {/* Quick Search Suggestions */}
+          </div>
 
-            <div className="flex gap-3 justify-center flex-wrap mt-6">
-              {categories.map((cat) => (
-                <Button
-                  key={cat}
-                  variant={filter === cat ? "default" : "outline"}
-                  className={`rounded-full px-5 py-2 text-sm font-medium transition-all ${filter === cat
-                    ? 'bg-gradient-to-br from-[#10b981] to-[#059669] text-white'
-                    : 'bg-white border border-gray-300 text-black hover:bg-gray-100 opacity-60'
-                    }`}
-                  onClick={() => setFilter(cat)}
-                >
-                  {cat}
-                </Button>
-              ))}
-            </div>
+          {/* Quick Filter Pills */}
+          <div className="flex gap-3 justify-center flex-wrap mt-6">
+            {categories.map((cat) => (
+              <Button
+                key={cat}
+                variant={filter === cat ? "default" : "outline"}
+                className={`rounded-full px-5 py-2 text-sm font-medium transition-all ${filter === cat
+                  ? 'bg-gradient-to-br from-primary/80 to-primary text-white hover:from-primary/90 hover:to-primary/80'
+                  : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
+                  }`}
+                onClick={() => setFilter(cat)}
+              >
+                {cat}
+              </Button>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Projects Grid */}
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-6 flex items-center justify-between">
           <p className="text-gray-600">
             <span className="font-semibold text-gray-900">{filtered.length}</span> projects found
@@ -267,73 +244,82 @@ export default function ExploreProjects() {
             <p className="text-gray-600">Try adjusting your search or filter criteria</p>
           </div>
         ) : (
-          <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filtered.map((project) => (
-              <Card key={project.id} className="h-full gap-0 py-0 flex flex-col overflow-hidden border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+              <Card key={project.id} className="h-full flex flex-col overflow-hidden border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 bg-white">
                 {/* Project Image + Badges */}
-                <div className="relative h-44 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img
-                    src={project.image || "/placeholder.jpg"}
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-2 left-2 flex gap-2">
-                    <span className={`px-2 py-1 rounded-full text-[10px] font-medium ${getStatusColor(project.status)}`}>{project.status}</span>
-                    <span className="px-2 py-1 rounded-full text-[10px] font-medium bg-white/90 text-gray-700">{project.category}</span>
+                  <div className="absolute top-3 left-3 flex gap-2">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(project.status)}`}>
+                      {project.status}
+                    </span>
+                    <span className="px-2 py-1 rounded-full text-xs font-medium bg-white/90 text-gray-700 border border-gray-200">
+                      {project.category}
+                    </span>
                   </div>
-                  <div className="absolute top-2 right-2 flex gap-2">
-
+                  <div className="absolute top-3 right-3">
                     <Button
-                      size="icon"
+                      size="sm"
                       variant="ghost"
-                      className="rounded-full hover:bg-gray-100 transition-colors"
+                      className="w-8 h-8 p-0 rounded-full bg-white/90 hover:bg-white transition-colors"
                       onClick={() => handleFollow(project.id)}
                       aria-label={project.followed ? "Unfollow project" : "Follow project"}
                     >
                       {project.followed ? (
                         <Star className="w-4 h-4 text-yellow-500 fill-current" />
                       ) : (
-                        <StarOff className="w-4 h-4 text-gray-400 group-hover:text-yellow-500 transition-colors" />
+                        <StarOff className="w-4 h-4 text-gray-500 hover:text-yellow-500 transition-colors" />
                       )}
                     </Button>
                   </div>
                 </div>
-                {/* Card Content */}
-                <div className="flex-1 flex flex-col px-4 py-3">
-                  {/* Title */}
-                  <h3 className="text-base font-bold text-slate-900 mb-1 leading-tight line-clamp-2">{project.title}</h3>
-                  {/* Description */}
-                  <p className="text-xs text-slate-500 mb-2 line-clamp-2">{project.description}</p>
-                  {/* Contractor & Location */}
-                  <div className="flex items-center justify-between text-xs text-gray-700 mb-1">
-                    <div className="flex items-center gap-1">
-                      <Building2 className="w-3 h-3 text-gray-400" />
-                      <span className="truncate max-w-[80px]">{project.contractor || "-"}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-gray-400" />
-                      <span>{project.location}</span>
-                    </div>
-                  </div>
-                  {/* Budget & Progress */}
-                  <div className="flex items-center justify-between text-xs text-gray-700 mb-2">
-                    <div className="flex items-center gap-1 mt-2">
-                      <span className="font-semibold">{project.budget}</span>
-                    </div>
-                    <span className="text-[11px] text-gray-500">{project.progress}%</span>
-                  </div>
-                  {/* Progress Bar */}
-                  <div className="mb-2">
-                    <div className="w-full h-1.5 bg-gray-200 rounded-full">
-                      <div
-                        className={`h-1.5 ${project.status === 'Completed' ? 'bg-green-500' : project.status === 'Ongoing' ? 'bg-blue-500' : project.status === 'Delayed' ? 'bg-orange-500' : 'bg-purple-500'} rounded-full transition-all duration-500`}
-                        style={{ width: `${project.progress}%` }}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-1" />
-                  {/* Follow Button */}
 
+                {/* Card Content */}
+                <div className="flex-1 flex flex-col p-4">
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 leading-tight line-clamp-2">
+                    {project.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-sm text-slate-600 mb-3 line-clamp-2 flex-1">
+                    {project.description}
+                  </p>
+                  
+                  {/* Contractor & Location */}
+                  <div className="mb-3">
+                    <div className="flex items-center gap-1 mb-1">
+                      <Building2 className="w-4 h-4 text-gray-400" />
+                      <span className="text-sm text-gray-700 truncate">{project.contractor}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4 text-gray-400" />
+                      <span className="text-sm text-gray-700">{project.location}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Budget & Progress */}
+                  <div className="flex items-center justify-between text-sm mb-2">
+                    <span className="font-semibold text-gray-900">{project.budget}</span>
+                    <span className="text-gray-500">{project.progress}% complete</span>
+                  </div>
+                  
+                  {/* Progress Bar */}
+                  <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className={`h-2 transition-all duration-500 ${
+                        project.status === 'Completed' ? 'bg-green-500' : 
+                        project.status === 'Ongoing' ? 'bg-primary' : 
+                        project.status === 'Delayed' ? 'bg-orange-500' : 'bg-purple-500'
+                      }`}
+                      style={{ width: `${project.progress}%` }}
+                    />
+                  </div>
                 </div>
               </Card>
             ))}

@@ -48,7 +48,7 @@ export default function SignIn() {
           </div>
         </div>
 
-        <h1 className="text-2xl font-bold text-[#1A2A4E] mb-1 text-center">Welcome to Prismix</h1>
+        <h1 className="text-2xl font-bold text-[#008753] mb-1 text-center">Welcome to Prismix</h1>
         <h2 className="text-base font-normal text-[#4B5563] mb-6 text-center">
           Empowering Transparency and Citizen Engagement
         </h2>
@@ -60,7 +60,7 @@ export default function SignIn() {
             <button
               type="button"
               onClick={() => setShowDropdown(!showDropdown)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-left focus:ring-2 focus:ring-[#1A2A4E]/50 focus:border-transparent flex items-center justify-between hover:bg-gray-50 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-left focus:ring-2 focus:ring-[#008753]/50 focus:border-transparent flex items-center justify-between hover:bg-gray-50 transition-colors"
             >
               <div className="flex items-center space-x-3">
                 <selectedUserType.icon className="w-5 h-5 text-gray-400" />
@@ -82,12 +82,12 @@ export default function SignIn() {
                         setShowDropdown(false);
                       }}
                       className={`w-full px-4 py-3 text-left hover:bg-gray-50 flex items-center space-x-3 transition-colors ${
-                        userType === type.value ? 'bg-[#1A2A4E]/5 text-[#1A2A4E]' : 'text-gray-900'
+                        userType === type.value ? 'bg-[#008753]/5 text-[#008753]' : 'text-gray-900'
                       }`}
                     >
-                      <IconComponent className={`w-5 h-5 ${userType === type.value ? 'text-[#1A2A4E]' : 'text-gray-400'}`} />
+                      <IconComponent className={`w-5 h-5 ${userType === type.value ? 'text-[#008753]' : 'text-gray-400'}`} />
                       <div>
-                        <div className={`font-medium ${userType === type.value ? 'text-[#1A2A4E]' : 'text-gray-900'}`}>
+                        <div className={`font-medium ${userType === type.value ? 'text-[#008753]' : 'text-gray-900'}`}>
                           {type.label}
                         </div>
                         <div className="text-sm text-gray-500">{type.description}</div>
@@ -108,7 +108,7 @@ export default function SignIn() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A4E]/50 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008753]/50 focus:border-transparent"
               required
             />
           </div>
@@ -122,7 +122,7 @@ export default function SignIn() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A4E]/50 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008753]/50 focus:border-transparent"
               required
             />
           </div>
@@ -130,7 +130,7 @@ export default function SignIn() {
           <div className="text-right">
             <button 
               type="button"
-              className="text-sm text-[#1A2A4E] font-medium hover:underline"
+              className="text-sm text-[#008753] font-medium hover:underline"
               onClick={() => router.push('/auth/forgot')}
             >
               Forgot Password?
@@ -139,7 +139,7 @@ export default function SignIn() {
 
           <button
             onClick={handleSubmit}
-            className="w-full bg-[#1A2A4E] text-white h-10 px-4 rounded-lg hover:bg-[#17213D] transition-colors duration-200"
+            className="w-full bg-[#008753] text-white h-10 px-4 rounded-lg hover:bg-[#17213D] transition-colors duration-200"
           >
             Login
           </button>
@@ -173,7 +173,7 @@ export default function SignIn() {
           Don't have an account?{' '}
           <button 
             type="button"
-            className="text-[#1A2A4E] hover:underline font-medium"
+            className="text-[#008753] hover:underline font-medium"
             onClick={() => router.push('/auth/signup')}
           >
             Sign up

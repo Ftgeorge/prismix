@@ -4,6 +4,30 @@
   border: none !important;
 }
 
+.custom-primary-text {
+  color: var(--primary) !important;
+}
+
+.custom-primary-bg {
+  background: var(--primary) !important;
+}
+
+.custom-primary-bg-light {
+  background: rgba(0, 135, 83, 0.08) !important;
+}
+
+.custom-primary-bg-dark {
+  background: #00663e !important;
+}
+
+.hover\:custom-primary-text:hover {
+  color: var(--primary) !important;
+}
+
+.hover\:custom-primary-bg-dark:hover {
+  background: #00663e !important;
+}
+
 .opaqueHeader {
   background: rgba(255,255,255,0.97) !important;
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06) !important;

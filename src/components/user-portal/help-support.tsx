@@ -312,28 +312,17 @@ export default function HelpSupport() {
             </div>
           </div>
 
-          {/* Contact Info */}
-          <Card className="bg-white border-0 shadow-sm">
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <Mail className="w-5 h-5 text-emerald-600" />
-                Contact Support
-              </h3>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <p className="font-medium text-gray-700">Email</p>
-                  <a href="mailto:support@prismix.ng" className="text-blue-600 hover:text-blue-800">
-                    support@prismix.ng
-                  </a>
-                </div>
-                <div>
-                  <p className="font-medium text-gray-700">Response Time</p>
-                  <p className="text-gray-600">Usually within 24 hours</p>
-                </div>
-                <div>
-                  <p className="font-medium text-gray-700">Business Hours</p>
-                  <p className="text-gray-600">Monday - Friday<br />9:00 AM - 5:00 PM WAT</p>
-                </div>
+          {/* Support Information */}
+          <Card className="p-6 bg-white border-0 shadow-sm">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Support Information</h3>
+            <div className="space-y-4">
+              <div>
+                <p className="font-medium text-gray-700">Response Time</p>
+                <p className="text-gray-600">Usually within 24 hours</p>
+              </div>
+              <div>
+                <p className="font-medium text-gray-700">Business Hours</p>
+                <p className="text-gray-600">Monday - Friday<br />9:00 AM - 5:00 PM WAT</p>
               </div>
             </div>
           </Card>

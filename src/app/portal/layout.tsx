@@ -112,7 +112,6 @@ function SidebarNav({ isCollapsed, setIsCollapsed }: { isCollapsed: boolean; set
                 ? 'opacity-0 scale-95 translate-x-2 w-0 overflow-hidden' 
                 : 'opacity-100 scale-100 translate-x-0 w-auto'
             }`}>
-              <h1 className="text-lg font-semibold text-slate-900 tracking-tight whitespace-nowrap">Prism</h1>
               <p className="text-xs text-slate-500 font-medium whitespace-nowrap">Civic Engagement Platform</p>
             </div>
           </div>
@@ -257,7 +256,7 @@ function NavItem({
     <Link
       href={item.href}
       className={`relative w-full flex items-center ${isCollapsed ? 'justify-center px-3' : 'justify-between px-3'} py-2.5 rounded-lg transition-all duration-300 group ${isActive
-          ? "bg-[#1A2A4E] text-white shadow-sm"
+          ? "bg-primary text-white shadow-sm"
           : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
         }`}
       title={isCollapsed ? item.label : undefined}
@@ -306,7 +305,7 @@ function NavItem({
 
       {/* Active indicator for collapsed state */}
       {isCollapsed && isActive && (
-        <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-blue-600 rounded-l-full transition-all duration-300 ${
+        <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-primary rounded-l-full transition-all duration-300 ${
           isCollapsed ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
         }`} />
       )}

@@ -60,7 +60,7 @@ export default function CitizenVoices() {
               className="group relative p-8 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-lg hover:border-slate-300 transition-all duration-300 hover:-translate-y-1"
             >
               {/* Subtle accent line */}
-              <div className="absolute top-0 left-6 right-6 h-0.5 bg-[#1A2A4E] rounded-b-full opacity-60"></div>
+              <div className="absolute top-0 left-6 right-6 h-0.5 bg-[#008753] rounded-b-full opacity-60"></div>
               
               {/* Quote icon */}
               <div className="absolute top-6 right-6 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
@@ -93,7 +93,7 @@ export default function CitizenVoices() {
                 <h3 className="font-semibold text-lg text-slate-900 mb-1">
                   {voice.name}
                 </h3>
-                <p className="text-[#1A2A4E] text-sm font-medium mb-1">{voice.title}</p>
+                <p className="text-[#008753] text-sm font-medium mb-1">{voice.title}</p>
                 <p className="text-xs text-slate-500 mb-6">{voice.location}</p>
                 
                 <blockquote className="text-slate-700 text-sm leading-relaxed flex-grow">
@@ -112,7 +112,7 @@ export default function CitizenVoices() {
             </p>
             <Button 
               size="lg" 
-              className="group px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-full transition-all duration-200 shadow-sm hover:shadow-md"
+              className="group px-8 py-3 bg-[#008753] text-white font-medium rounded-full transition-all duration-200 shadow-sm hover:shadow-md"
             >
               Join the Community
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
