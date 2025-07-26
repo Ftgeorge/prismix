@@ -230,39 +230,22 @@ export default function ExploreProjects() {
               </div>
             </div>
             {/* Quick Search Suggestions */}
-            <div className="w-full max-w-fit mx-auto rounded-b-2xl px-0.5 pb-0.5 mt-6">
-              <div className="flex flex-wrap justify-center gap-3 max-w-fit p-1 rounded-b-2xl">
-                {["Road Projects", "Healthcare", "Education", "Water Supply", "Agriculture"].map((suggestion) => {
-                  const isSuggested = false; // For now, no state
-                  return (
-                    <button
-                      key={suggestion}
-                      disabled
-                      className={`px-4 py-2 text-sm transition-all duration-300 bg-white border border-gray-300 text-black rounded-full shadow-sm hover:bg-gray-100 opacity-60 cursor-not-allowed`}
-                    >
-                      {suggestion}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
 
-            <div className="flex gap-3 justify-center flex-wrap">
+            <div className="flex gap-3 justify-center flex-wrap mt-6">
               {categories.map((cat) => (
                 <Button
                   key={cat}
                   variant={filter === cat ? "default" : "outline"}
-                  className={`rounded-full px-5 py-2 text-sm font-medium transition-all ${
-                    filter === cat 
-                      ? 'bg-blue-600 text-white hover:bg-blue-700' 
-                      : 'border-gray-300 text-gray-700 hover:border-blue-500 hover:text-blue-600'
-                  }`}
+                  className={`rounded-full px-5 py-2 text-sm font-medium transition-all ${filter === cat
+                    ? 'bg-gradient-to-br from-[#10b981] to-[#059669] text-white'
+                    : 'bg-white border border-gray-300 text-black hover:bg-gray-100 opacity-60'
+                    }`}
                   onClick={() => setFilter(cat)}
                 >
                   {cat}
                 </Button>
               ))}
+            </div>
           </div>
         </div>
       </div>
@@ -275,7 +258,7 @@ export default function ExploreProjects() {
           </p>
         </div>
 
-         {filtered.length === 0 ? (
+        {filtered.length === 0 ? (
           <div className="text-center py-16">
             <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Search className="w-8 h-8 text-gray-400" />
@@ -284,11 +267,11 @@ export default function ExploreProjects() {
             <p className="text-gray-600">Try adjusting your search or filter criteria</p>
           </div>
         ) : (
-          <div className="mx-auto px-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+          <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
             {filtered.map((project) => (
-              <Card key={project.id} className="h-full flex flex-col overflow-hidden border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+              <Card key={project.id} className="h-full gap-0 py-0 flex flex-col overflow-hidden border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 bg-white">
                 {/* Project Image + Badges */}
-                <div className="relative h-32 overflow-hidden">
+                <div className="relative h-44 overflow-hidden">
                   <img
                     src={project.image || "/placeholder.jpg"}
                     alt={project.title}
@@ -297,6 +280,22 @@ export default function ExploreProjects() {
                   <div className="absolute top-2 left-2 flex gap-2">
                     <span className={`px-2 py-1 rounded-full text-[10px] font-medium ${getStatusColor(project.status)}`}>{project.status}</span>
                     <span className="px-2 py-1 rounded-full text-[10px] font-medium bg-white/90 text-gray-700">{project.category}</span>
+                  </div>
+                  <div className="absolute top-2 right-2 flex gap-2">
+
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="rounded-full hover:bg-gray-100 transition-colors"
+                      onClick={() => handleFollow(project.id)}
+                      aria-label={project.followed ? "Unfollow project" : "Follow project"}
+                    >
+                      {project.followed ? (
+                        <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                      ) : (
+                        <StarOff className="w-4 h-4 text-gray-400 group-hover:text-yellow-500 transition-colors" />
+                      )}
+                    </Button>
                   </div>
                 </div>
                 {/* Card Content */}
@@ -318,8 +317,7 @@ export default function ExploreProjects() {
                   </div>
                   {/* Budget & Progress */}
                   <div className="flex items-center justify-between text-xs text-gray-700 mb-2">
-                    <div className="flex items-center gap-1">
-                      <DollarSign className="w-3 h-3 text-gray-400" />
+                    <div className="flex items-center gap-1 mt-2">
                       <span className="font-semibold">{project.budget}</span>
                     </div>
                     <span className="text-[11px] text-gray-500">{project.progress}%</span>
@@ -335,21 +333,7 @@ export default function ExploreProjects() {
                   </div>
                   <div className="flex-1" />
                   {/* Follow Button */}
-                  <div className="flex justify-end mt-2">
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="rounded-full hover:bg-gray-100 transition-colors"
-                      onClick={() => handleFollow(project.id)}
-                      aria-label={project.followed ? "Unfollow project" : "Follow project"}
-                    >
-                      {project.followed ? (
-                        <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                      ) : (
-                        <StarOff className="w-4 h-4 text-gray-400 group-hover:text-yellow-500 transition-colors" />
-                      )}
-                    </Button>
-                  </div>
+
                 </div>
               </Card>
             ))}

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Bell, CheckCircle, Info, AlertTriangle, Star, StarOff, Trash2, MailCheck, Mail } from "lucide-react";
+import { Bell, CheckCircle, Info, AlertTriangle, Star, StarOff, Trash2, MailCheck, Mail, MoreVertical } from "lucide-react";
 
 type Notification = {
   id: number;
@@ -55,15 +55,15 @@ const mockNotifications: Notification[] = [
 function iconForType(type: string) {
   switch (type) {
     case "update":
-      return <Bell className="w-5 h-5 text-blue-900" />;
+      return <Bell className="w-4 h-4 text-blue-600" />;
     case "success":
-      return <CheckCircle className="w-5 h-5 text-emerald-500" />;
+      return <CheckCircle className="w-4 h-4 text-emerald-600" />;
     case "info":
-      return <Info className="w-5 h-5 text-blue-400" />;
+      return <Info className="w-4 h-4 text-blue-500" />;
     case "warning":
-      return <AlertTriangle className="w-5 h-5 text-orange-400" />;
+      return <AlertTriangle className="w-4 h-4 text-amber-600" />;
     default:
-      return <Bell className="w-5 h-5 text-blue-900" />;
+      return <Bell className="w-4 h-4 text-blue-600" />;
   }
 }
 
@@ -71,127 +71,184 @@ export default function Notifications() {
   const [notifications, setNotifications] = useState(mockNotifications);
   const [selected, setSelected] = useState<number[]>([]);
 
+  const unreadCount = notifications.filter(n => !n.read).length;
+
   const toggleSelect = (id: number) => {
     setSelected((prev) => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
   };
+
   const selectAll = () => {
     setSelected(notifications.length === selected.length ? [] : notifications.map(n => n.id));
   };
+
   const markSelectedAsRead = () => {
     setNotifications((prev) => prev.map(n => selected.includes(n.id) ? { ...n, read: true } : n));
     setSelected([]);
   };
+
   const markSelectedAsUnread = () => {
     setNotifications((prev) => prev.map(n => selected.includes(n.id) ? { ...n, read: false } : n));
     setSelected([]);
   };
+
   const deleteSelected = () => {
     setNotifications((prev) => prev.filter(n => !selected.includes(n.id)));
     setSelected([]);
   };
+
   const toggleStar = (id: number) => {
     setNotifications((prev) => prev.map(n => n.id === id ? { ...n, starred: !n.starred } : n));
   };
+
   const markAsRead = (id: number) => {
     setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
   };
 
   return (
-    <section className="w-full py-10 px-2">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-8">Notifications</h2>
-        <div className="mb-4 flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={selected.length === notifications.length && notifications.length > 0}
-            onChange={selectAll}
-            className="form-checkbox h-5 w-5 text-blue-800 border-gray-300 rounded focus:ring-blue-500"
-            aria-label="Select all"
-          />
-          <button
-            className="px-2 py-1 rounded text-xs font-medium bg-blue-50 text-blue-800 border border-blue-100 hover:bg-blue-100 disabled:opacity-50"
-            onClick={markSelectedAsRead}
-            disabled={selected.length === 0}
-          >
-            <MailCheck className="inline w-4 h-4 mr-1" /> Mark as read
-          </button>
-          <button
-            className="px-2 py-1 rounded text-xs font-medium bg-blue-50 text-blue-800 border border-blue-100 hover:bg-blue-100 disabled:opacity-50"
-            onClick={markSelectedAsUnread}
-            disabled={selected.length === 0}
-          >
-            <Mail className="inline w-4 h-4 mr-1" /> Mark as unread
-          </button>
-          <button
-            className="px-2 py-1 rounded text-xs font-medium bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 disabled:opacity-50"
-            onClick={deleteSelected}
-            disabled={selected.length === 0}
-          >
-            <Trash2 className="inline w-4 h-4 mr-1" /> Delete
-          </button>
+    <div className="mx-auto p-6 bg-gray-50 min-h-screen">
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-2">
+          <h1 className="text-3xl font-semibold text-gray-900">Notifications</h1>
+          <div className="flex items-center gap-2">
+            {unreadCount > 0 && (
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                {unreadCount} unread
+              </span>
+            )}
+          </div>
         </div>
-        <div className="bg-white shadow rounded-xl overflow-hidden border border-blue-100">
-          <table className="min-w-full divide-y divide-blue-50">
-            <thead className="bg-blue-50">
-              <tr>
-                <th className="w-10 px-2 py-3 text-left">
+        <p className="text-gray-600">Stay updated with your project activities and system alerts</p>
+      </div>
+
+      {/* Action Bar */}
+      {selected.length > 0 && (
+        <div className="mb-6 p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-700 font-medium">
+              {selected.length} notification{selected.length !== 1 ? 's' : ''} selected
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={markSelectedAsRead}
+                className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-700 bg-blue-50 border border-blue-200 rounded-md hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors"
+              >
+                <MailCheck className="w-4 h-4 mr-1.5" />
+                Mark Read
+              </button>
+              <button
+                onClick={markSelectedAsUnread}
+                className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-700 bg-blue-50 border border-blue-200 rounded-md hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors"
+              >
+                <Mail className="w-4 h-4 mr-1.5" />
+                Mark Unread
+              </button>
+              <button
+                onClick={deleteSelected}
+                className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-red-700 bg-red-50 border border-red-200 rounded-md hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-1 transition-colors"
+              >
+                <Trash2 className="w-4 h-4 mr-1.5" />
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Notifications List */}
+      <Card className="bg-white shadow-sm border-0">
+        <div className="divide-y divide-gray-100">
+          {/* Select All Header */}
+          <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={selected.length === notifications.length && notifications.length > 0}
+                onChange={selectAll}
+                className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+              />
+              <span className="ml-3 text-sm font-medium text-gray-700">
+                {selected.length > 0 ? `${selected.length} selected` : 'Select all'}
+              </span>
+            </label>
+          </div>
+
+          {/* Notifications */}
+          {notifications.length === 0 ? (
+            <div className="text-center py-16">
+              <Bell className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No notifications</h3>
+              <p className="text-gray-500">You're all caught up! Check back later for updates.</p>
+            </div>
+          ) : (
+            notifications.map((notification) => (
+              <div
+                key={notification.id}
+                className={`px-6 py-4 hover:bg-gray-50 transition-colors ${
+                  !notification.read ? 'bg-blue-50/50' : ''
+                } ${selected.includes(notification.id) ? 'bg-blue-100/50' : ''}`}
+              >
+                <div className="flex items-start gap-4">
+                  {/* Checkbox */}
                   <input
                     type="checkbox"
-                    checked={selected.length === notifications.length && notifications.length > 0}
-                    onChange={selectAll}
-                    className="form-checkbox h-5 w-5 text-blue-800 border-gray-300 rounded focus:ring-blue-500"
-                    aria-label="Select all"
+                    checked={selected.includes(notification.id)}
+                    onChange={() => toggleSelect(notification.id)}
+                    className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                   />
-                </th>
-                <th className="w-10 px-2 py-3"></th>
-                <th className="px-2 py-3 text-left text-xs font-semibold text-blue-700">Sender</th>
-                <th className="px-2 py-3 text-left text-xs font-semibold text-blue-700">Message</th>
-                <th className="px-2 py-3 text-left text-xs font-semibold text-blue-700">Time</th>
-                <th className="w-10 px-2 py-3"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {notifications.length === 0 ? (
-                <tr>
-                  <td colSpan={6} className="text-center text-gray-500 py-12 text-lg">No notifications.</td>
-                </tr>
-              ) : (
-                notifications.map((n) => (
-                  <tr
-                    key={n.id}
-                    className={`transition-all duration-200 ${n.read ? 'bg-white' : 'bg-blue-50/80 font-semibold text-blue-900'} ${selected.includes(n.id) ? 'ring-2 ring-blue-200' : ''}`}
-                  >
-                    <td className="px-2 py-3">
-                      <input
-                        type="checkbox"
-                        checked={selected.includes(n.id)}
-                        onChange={() => toggleSelect(n.id)}
-                        className="form-checkbox h-5 w-5 text-blue-800 border-gray-300 rounded focus:ring-blue-500"
-                        aria-label={`Select notification ${n.id}`}
-                      />
-                    </td>
-                    <td className="px-2 py-3">
-                      <button
-                        className="focus:outline-none"
-                        onClick={() => toggleStar(n.id)}
-                        aria-label={n.starred ? "Unstar" : "Star"}
-                      >
-                        {n.starred ? <Star className="w-5 h-5 text-yellow-400 fill-yellow-300" /> : <StarOff className="w-5 h-5 text-gray-300" />}
-                      </button>
-                    </td>
-                    <td className="px-2 py-3 text-sm text-blue-800 whitespace-nowrap">{n.sender}</td>
-                    <td className="px-2 py-3 text-sm cursor-pointer hover:underline" onClick={() => markAsRead(n.id)}>{iconForType(n.type)} <span className="ml-2">{n.message}</span></td>
-                    <td className="px-2 py-3 text-xs text-gray-500 whitespace-nowrap">{n.time}</td>
-                    <td className="px-2 py-3">
-                      {!n.read && <span className="w-3 h-3 bg-emerald-400 rounded-full inline-block" title="Unread" />}
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+
+                  {/* Icon */}
+                  <div className="flex-shrink-0 mt-1">
+                    {iconForType(notification.type)}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <p className="text-sm font-medium text-gray-900">
+                            {notification.sender}
+                          </p>
+                          {!notification.read && (
+                            <span className="inline-block w-2 h-2 bg-blue-600 rounded-full"></span>
+                          )}
+                        </div>
+                        <p
+                          className={`text-sm cursor-pointer hover:text-blue-600 transition-colors ${
+                            !notification.read ? 'text-gray-900 font-medium' : 'text-gray-700'
+                          }`}
+                          onClick={() => markAsRead(notification.id)}
+                        >
+                          {notification.message}
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {notification.time}
+                        </p>
+                      </div>
+
+                      {/* Actions */}
+                      <div className="flex items-center gap-2 ml-4">
+                        <button
+                          onClick={() => toggleStar(notification.id)}
+                          className="p-1 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors"
+                          aria-label={notification.starred ? "Remove star" : "Add star"}
+                        >
+                          {notification.starred ? (
+                            <Star className="w-4 h-4 text-amber-500 fill-amber-400" />
+                          ) : (
+                            <StarOff className="w-4 h-4 text-gray-400 hover:text-amber-500" />
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
-      </div>
-    </section>
+      </Card>
+    </div>
   );
 }
