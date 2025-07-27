@@ -14,7 +14,7 @@ export function AuthScreen() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100">
       <Card className="p-10 w-full max-w-md shadow-2xl flex flex-col gap-7 rounded-2xl border border-blue-100 bg-white/90">
-        <h1 className="text-3xl md:text-4xl font-serif font-extrabold text-blue-900 text-center mb-3 tracking-tight drop-shadow-sm">Prismix Portal</h1>
+        <h1 className="text-3xl md:text-4xl font-serif font-extrabold text-blue-900 text-center mb-3 tracking-tight drop-shadow-sm">Prism Portal</h1>
         <div className="flex justify-center gap-2 mb-6">
           <Button variant={mode === "login" ? "default" : "outline"} onClick={() => setMode("login")} className="rounded-full px-6 font-semibold text-base">Login</Button>
           <Button variant={mode === "register" ? "default" : "outline"} onClick={() => setMode("register") } className="rounded-full px-6 font-semibold text-base">Register</Button>

@@ -117,7 +117,7 @@ export default function HelpSupport() {
               </div>
               <div className="ml-3">
                 <h3 className="font-medium text-gray-900">Email Support</h3>
-                <p className="text-sm text-gray-600">support@prismix.ng</p>
+                <p className="text-sm text-gray-600">support@prism.ng</p>
               </div>
             </div>
           </Card>

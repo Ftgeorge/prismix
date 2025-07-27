@@ -18,7 +18,7 @@ export function SidebarNav() {
   const pathname = usePathname();
   return (
     <aside className="h-full w-64 bg-primary text-white flex flex-col py-8 px-4 gap-8 shadow-xl">
-      <div className="mb-6 text-2xl font-bold tracking-tight">Prismix</div>
+      <div className="mb-6 text-2xl font-bold tracking-tight">Prism</div>
       <nav className="flex-1 flex flex-col gap-2">
         {navItems.map((item) => (
           <Link

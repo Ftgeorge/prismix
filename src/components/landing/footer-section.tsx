@@ -4,7 +4,7 @@ import Image from "next/image";
 // Footer data
 const footerData = {
   company: {
-    name: "Prismix",
+    name: "Prism",
     description: "Building transparent governance through citizen engagement and accountability.",
     tagline: "Empowering communities since 2025"
   },
@@ -32,8 +32,8 @@ const footerData = {
   },
 
   contact: [
-    { icon: Mail, label: "hello@prismix.ng", href: "mailto:hello@prismix.ng" },
-    { icon: Phone, label: "+234 (0) 800 PRISMIX", href: "tel:+2348007747649" },
+    { icon: Mail, label: "hello@prism.ng", href: "mailto:hello@prism.ng" },
+    { icon: Phone, label: "+234 (0) 800 Prism", href: "tel:+2348007747649" },
     { icon: MapPin, label: "Lagos, Nigeria", href: null },
     { icon: Clock, label: "24/7 Platform Access", href: null }
   ],
@@ -54,7 +54,7 @@ function CompanyLogo() {
           <div className="flex items-center gap-2 h-10 xl:h-12">
             <Image
               src="/logo.png"
-              alt="Prismix Logo"
+              alt="Prism Logo"
               width={80}
               height={80}
             />
@@ -186,7 +186,7 @@ function Copyright() {
           <div className="flex items-center h-7">
             <Image
               src="/heuvera.png"
-              alt="Prismix Logo"
+              alt="Prism Logo"
               width={55}
               height={55}
             />

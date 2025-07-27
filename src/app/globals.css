@@ -4,15 +4,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Prismix Color Palette */
-  --color-prismix-royal-blue: #1E3A8A;
-  --color-prismix-sky-blue: #60A5FA;
-  --color-prismix-emerald: #10B981;
-  --color-prismix-amber: #F59E0B;
-  --color-prismix-red: #EF4444;
-  --color-prismix-neutral-50: #F9FAFB;
-  --color-prismix-gray-900: #111827;
-  --color-prismix-gray-600: #4B5563;
+  /* Prism Color Palette */
+  --color-prism-royal-blue: #1E3A8A;
+  --color-prism-sky-blue: #60A5FA;
+  --color-prism-emerald: #10B981;
+  --color-prism-amber: #F59E0B;
+  --color-prism-red: #EF4444;
+  --color-prism-neutral-50: #F9FAFB;
+  --color-prism-gray-900: #111827;
+  --color-prism-gray-600: #4B5563;
 
   /* Theme Variables */
   --color-background: var(--background);
@@ -56,7 +56,7 @@
 
 :root {
   --radius: 0.625rem;
-  /* Prismix Light Theme */
+  /* Prism Light Theme */
   --background: #F9FAFB; /* Neutral-50 */
   --foreground: #111827; /* Gray-900 */
   --card: #FFFFFF;

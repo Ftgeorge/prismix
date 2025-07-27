@@ -7,7 +7,7 @@ const voices = [
   {
     name: "Aisha B.",
     title: "Community Leader",
-    feedback: "I reported an abandoned school and got a response in days! Prismix is changing the game for real civic engagement.",
+    feedback: "I reported an abandoned school and got a response in days! Prism is changing the game for real civic engagement.",
     avatar: "https://randomuser.me/api/portraits/women/65.jpg",
     rating: 5,
     location: "Lagos, Nigeria"

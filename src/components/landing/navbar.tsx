@@ -52,7 +52,7 @@ export function LandingNavBar() {
             <div className="flex items-center gap-2 h-10 xl:h-12">
               <Image
                 src={scrolled ? "/logo.png" : "/logo-white.png"}
-                alt="Prismix Logo"
+                alt="Prism Logo"
                 width={80}
                 height={80}
                 className="transition-all duration-500 ease-in-out"
@@ -142,7 +142,7 @@ export function LandingNavBar() {
                 <div className="flex items-center gap-3 h-8">
                   <Image
                     src="/logo.png"
-                    alt="Prismix Logo"
+                    alt="Prism Logo"
                     width={100}
                     height={100}
                   />
@@ -205,7 +205,7 @@ export function LandingNavBar() {
                 </Link>
 
                 <div className="mt-4 text-center">
-                  <p className="text-xs text-slate-500">© 2024 Prismix. All rights reserved.</p>
+                  <p className="text-xs text-slate-500">© 2024 Prism. All rights reserved.</p>
                 </div>
               </div>
             </div>
