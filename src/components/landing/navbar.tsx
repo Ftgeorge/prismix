@@ -29,28 +29,34 @@ export function LandingNavBar() {
         }
       }
       setActiveSection(current);
-      // Navbar background logic
-      setScrolled(window.scrollY > 10);
+      // Navbar background logic - becomes true when scrolled down
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
+    // Call handleScroll immediately to set initial state
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header className={`w-full sticky top-0 z-50 transition-all duration-300 ${activeSection === 'home' ? styles.transparentHeader : styles.opaqueHeader}`}>
-      <nav className="px-10 xl:px-10 mx-auto max-w-screen-xl flex items-center justify-between py-3 xl:py-3">
+    <header
+      className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${scrolled
+          ? styles.opaqueHeader
+          : styles.transparentHeader
+        }`}
+    >
+      <nav className="px-4 md:px-10 xl:px-10 mx-auto max-w-screen-xl flex items-center justify-between py-3 xl:py-3">
         {/* Logo Section - Left */}
-        <div className="flex items-center w-56 xl:w-56 flex-shrink-0">
+        <div className="flex items-center md:w-22 lg:w-56 xl:w-56 flex-shrink-0">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="flex items-center gap-2 h-10 xl:h-12">
               <Image
-                src="/logo.png"
+                src={scrolled ? "/logo.png" : "/logo-white.png"}
                 alt="Prismix Logo"
                 width={80}
                 height={80}
+                className="transition-all duration-500 ease-in-out"
               />
-              
             </div>
           </Link>
         </div>
@@ -76,10 +82,13 @@ export function LandingNavBar() {
                       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                   }}
-                  className={`px-2.5 xl:px-3 py-1 lg:py-1 text-xs lg:text-xs xl:text-sm font-medium rounded-lg transition-all duration-200 relative group ${activeSection === item.href.slice(1) ? `${styles['custom-primary-text']} font-bold` : `text-slate-700 ${styles['hover:custom-primary-text']} hover:bg-slate-50`}`}
+                  className={`px-2.5 xl:px-3 py-1 lg:py-1 text-xs lg:text-xs xl:text-sm font-medium rounded-lg transition-all duration-300 relative group ${activeSection === item.href.slice(1)
+                      ? `${!scrolled ? 'text-white' : styles['custom-primary-text']} font-bold`
+                      : `${!scrolled ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'}`
+                    }`}
                 >
                   {item.label}
-                  <span className={`absolute inset-x-4 bottom-0 h-0.5 bg-[#008753] transition-transform duration-200 origin-left ${activeSection === item.href.slice(1) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                  <span className={`absolute inset-x-4 bottom-0 h-0.5 ${!scrolled ? 'bg-white' : 'bg-[#008753]'} transition-transform duration-200 origin-left ${activeSection === item.href.slice(1) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </a>
               </li>
             ))}
@@ -87,10 +96,13 @@ export function LandingNavBar() {
         </div>
 
         {/* CTA Button and Mobile Menu - Right */}
-        <div className="flex items-end justify-end gap-2 xl:gap-2 w-56 xl:w-56 flex-shrink-0">
+        <div className="flex items-end justify-end gap-2 xl:gap-2 md:w-22 lg:w-56 xl:w-56 flex-shrink-0">
           {/* Desktop Sign In button */}
           <button
-            className={`relative group flex items-center px-3 xl:px-4 text-xs lg:text-xs xl:text-sm py-1.5 lg:py-1.5 xl:py-2 text-white rounded-full font-semibold transition-all duration-300 overflow-hidden ${styles['custom-primary-bg-dark']} hidden md:flex` }
+            className={`relative group flex items-center px-3 xl:px-5 text-xs lg:text-xs xl:text-sm py-1.5 lg:py-1.5 xl:py-2 rounded-full font-semibold transition-all duration-300 overflow-hidden hidden md:flex ${!scrolled
+                ? 'text-black bg-white'
+                : `text-white ${styles['custom-primary-bg-dark']} hover:opacity-90`
+              }`}
           >
             <Link href="/auth" className="flex items-center gap-2">
               <span>Sign In</span>
@@ -100,82 +112,122 @@ export function LandingNavBar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors duration-200"
+            className={`md:hidden p-2 rounded-lg transition-colors duration-200 ${!scrolled
+                ? 'text-white hover:bg-white/10'
+                : 'text-slate-700 hover:bg-slate-100'
+              }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Open mobile menu"
           >
-            <svg className="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown Menu - Professional Design */}
         {mobileMenuOpen && (
-  <div className="md:hidden fixed inset-0 z-50 flex justify-end animate-fade-in">
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
-    {/* Menu Panel */}
-    <div className="relative w-72 max-w-full h-full bg-white/70 backdrop-blur-2xl border border-slate-200 shadow-2xl rounded-l-2xl py-8 px-6 flex flex-col gap-6 animate-slide-in-right">
-      {/* Close Button */}
-      <button
-        className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 transition-colors"
-        onClick={() => setMobileMenuOpen(false)}
-        aria-label="Close menu"
-      >
-        <svg className="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      {/* Nav Links */}
-      <nav className="flex flex-col gap-1 mt-2">
-        {[
-          { href: "#home", label: "Home" },
-          { href: "#projects", label: "Projects" },
-          { href: "#categories", label: "Categories" },
-          { href: "#voices", label: "Voices" },
-          { href: "#newsletter", label: "Newsletter" },
-          { href: "#contact", label: "Contact" }
-        ].map((item) => (
-          <button
-            key={item.href}
-            onClick={e => {
-              e.preventDefault();
-              setMobileMenuOpen(false);
-              const el = document.querySelector(item.href);
-              if (el) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          <div className="md:hidden fixed inset-0 z-50 flex justify-end">
+            {/* Overlay */}
+            <div
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+
+            {/* Menu Panel */}
+            <div className="relative w-80 max-w-[90vw] h-full bg-white shadow-2xl flex flex-col animate-slide-in-right">
+
+              {/* Header Section */}
+              <div className="flex items-center justify-between p-6 border-b border-slate-100">
+                <div className="flex items-center gap-3 h-8">
+                  <Image
+                    src="/logo.png"
+                    alt="Prismix Logo"
+                    width={100}
+                    height={100}
+                  />
+                </div>
+                <button
+                  className="p-2 rounded-full hover:bg-slate-100 transition-colors duration-200"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <div className="flex-1 px-6 py-4">
+                <nav className="space-y-1">
+                  {[
+                    { href: "#home", label: "Home", },
+                    { href: "#projects", label: "Projects", },
+                    { href: "#categories", label: "Categories", },
+                    { href: "#voices", label: "Voices", },
+                    { href: "#newsletter", label: "Newsletter", },
+                    { href: "#contact", label: "Contact", }
+                  ].map((item) => (
+                    <button
+                      key={item.href}
+                      onClick={e => {
+                        e.preventDefault();
+                        setMobileMenuOpen(false);
+                        const el = document.querySelector(item.href);
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
+                      className={`group flex items-center w-full px-4 py-3 text-left rounded-xl transition-all duration-200 ${activeSection === item.href.slice(1)
+                          ? 'bg-[#008753]/10 text-[#008753] shadow-sm border border-[#008753]/20'
+                          : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
+                        }`}
+                    >
+                      <span className="font-medium text-base">{item.label}</span>
+                      {activeSection === item.href.slice(1) && (
+                        <div className="ml-auto w-2 h-2 rounded-full bg-[#008753]"></div>
+                      )}
+                    </button>
+                  ))}
+                </nav>
+              </div>
+
+              {/* Footer Section */}
+              <div className="p-6 border-t border-slate-100 bg-slate-50">
+                <Link
+                  href="/auth"
+                  className={`flex items-center justify-center gap-3 w-full px-6 py-4 text-base font-semibold rounded-xl text-white ${styles['custom-primary-bg-dark']} shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span>Sign In</span>
+                  <ArrowRight className="size-5" />
+                </Link>
+
+                <div className="mt-4 text-center">
+                  <p className="text-xs text-slate-500">© 2024 Prismix. All rights reserved.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Animation styles */}
+            <style jsx>{`
+              @keyframes slide-in-right {
+                from { 
+                  transform: translateX(100%); 
+                  opacity: 0; 
+                }
+                to { 
+                  transform: translateX(0); 
+                  opacity: 1; 
+                }
               }
-            }}
-            className={`group flex items-center w-full px-0 py-3 text-base font-semibold rounded-lg transition-all duration-200 relative pl-5 ${activeSection === item.href.slice(1)
-              ? styles['custom-primary-text'] + ' bg-white/90 shadow-sm' : 'text-slate-700 hover:bg-white/80'}`}
-          >
-            {/* Accent Bar */}
-            <span className={`absolute left-0 top-2 bottom-2 w-1.5 rounded-full transition-all duration-200 ${activeSection === item.href.slice(1) ? 'bg-[#008753]' : 'bg-transparent'}`}></span>
-            {item.label}
-          </button>
-        ))}
-      </nav>
-      {/* Divider */}
-      <div className="border-t border-slate-200 my-2" />
-      {/* Sign In Button */}
-      <Link href="/auth" className={`flex items-center gap-2 px-5 py-3 text-base font-semibold rounded-full text-white ${styles['custom-primary-bg-dark']} shadow-lg hover:scale-105 transition-transform`}>
-        <span>Sign In</span>
-        <ArrowRight className="size-5" />
-      </Link>
-    </div>
-    {/* Animation styles */}
-    <style jsx>{`
-      @keyframes slide-in-right {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-      }
-      .animate-slide-in-right {
-        animation: slide-in-right 0.35s cubic-bezier(0.4,0,0.2,1) both;
-      }
-    `}</style>
-  </div>
-)}
+              .animate-slide-in-right {
+                animation: slide-in-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+              }
+            `}</style>
+          </div>
+        )}
       </nav>
     </header>
   );

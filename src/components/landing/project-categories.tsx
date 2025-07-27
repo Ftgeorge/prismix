@@ -54,16 +54,16 @@ const categories = [
 
 export function ProjectCategories() {
   return (
-    <section className="w-full py-16 bg-[#f9fafb]">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="section-header text-3xl font-bold text-center mb-8">
+    <section className="w-full py-8 xs:py-10 sm:py-12 md:py-16 bg-[#f9fafb]">
+      <div className="max-w-3xl sm:max-w-4xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-3 xs:px-4 lg:px-10">
+        <h2 className="section-header text-xl xs:text-2xl lg:text-2xl xl:text-3xl font-bold text-center mb-4 xs:mb-5 sm:mb-6 md:mb-8">
           Project Categories
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
           {categories.map((cat) => (
-            <Card key={cat.title} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-blue-100 bg-white transform hover:-translate-y-2">
+            <Card key={cat.title} className="group py-0 lg:py-0 xl:py-0 2xl:py-0 relative overflow-hidden rounded-3xl shadow-md xs:shadow-lg hover:shadow-xl xs:hover:shadow-2xl transition-all duration-300 cursor-pointer border border-blue-100 bg-white transform hover:-translate-y-1 xs:hover:-translate-y-2">
               {/* Parallelogram Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-44 md:h-36 overflow-hidden">
                 <div 
                   className="absolute inset-0 bg-cover bg-center transform skew-y-1 scale-110 transition-transform duration-300 group-hover:scale-125"
                   style={{
@@ -75,17 +75,17 @@ export function ProjectCategories() {
               </div>
               
               {/* Content */}
-              <div className="relative p-6 -mt-8 bg-white rounded-t-2xl">
-                <div className="flex items-center mb-4">
-                  <div className={`rounded-full p-3 mr-3 ${cat.color} group-hover:scale-110 transition-transform duration-200 shadow-sm`}>
-                    <cat.icon className="w-6 h-6" />
+              <div className="relative p-4 md:p-5 -mt-4 md:-mt-5 bg-white rounded-t-xl xs:rounded-t-xl sm:rounded-t-2xl">
+                <div className="flex items-center mb-2.5 md:mb-3">
+                  <div className={`rounded-full p-2 md:p-2.5 mr-2.5 ${cat.color} group-hover:scale-110 transition-transform duration-200 shadow-sm`}>
+                    <cat.icon className="h-5 md:w-5 md:h-5 lg:size-3 xl:size-5" />
                   </div>
-                  <h3 className="text-xl font-serif font-bold text-blue-900 transition-colors duration-200">
+                  <h3 className="text-lg md:text-xl lg:text-base xl:text-xl font-serif font-bold text-blue-900 transition-colors duration-200 leading-tight">
                     {cat.title}
                   </h3>
                 </div>
                 
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm lg:text-xs xl:text-sm leading-relaxed">
                   {cat.description}
                 </p>
               </div>
