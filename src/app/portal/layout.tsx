@@ -99,7 +99,7 @@ function SidebarNav({ isCollapsed, setIsCollapsed }: { isCollapsed: boolean; set
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <div 
-              className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+              className={`h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
                 isCollapsed ? 'cursor-pointer hover:bg-slate-100 transition-colors duration-200' : ''
               }`}
               onClick={isCollapsed ? () => setIsCollapsed(false) : undefined}
