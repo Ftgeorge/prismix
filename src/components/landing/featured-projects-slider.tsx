@@ -1,7 +1,7 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MapPin, ChevronLeft, ChevronRight, Building2, DollarSign } from "lucide-react";
+import { MapPin, ChevronLeft, ChevronRight, Building2 } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const featuredProjects = [
@@ -35,96 +35,6 @@ const featuredProjects = [
     image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=250&fit=crop&auto=format",
     category: "Infrastructure"
   },
-  {
-    title: "Kano Solar Grid Initiative",
-    status: "Ongoing",
-    contractor: "GreenTech NG",
-    amount: "₦15B",
-    location: "Kano",
-    progress: 55,
-    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=250&fit=crop&auto=format",
-    category: "Energy"
-  },
-  {
-    title: "Port Harcourt Bridge Construction",
-    status: "Planning",
-    contractor: "Setraco Nigeria Ltd",
-    amount: "₦45B",
-    location: "Rivers",
-    progress: 15,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop&auto=format",
-    category: "Infrastructure"
-  },
-  {
-    title: "Kaduna Airport Expansion",
-    status: "Ongoing",
-    contractor: "Reynolds Construction",
-    amount: "₦35B",
-    location: "Kaduna",
-    progress: 78,
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=250&fit=crop&auto=format",
-    category: "Transportation"
-  },
-  {
-    title: "Benin City Smart Drainage Project",
-    status: "Ongoing",
-    contractor: "EdoWorks Engineering",
-    amount: "₦18B",
-    location: "Edo",
-    progress: 60,
-    image: "https://images.unsplash.com/photo-1565103031652-97ff53f2b1fc?w=400&h=250&fit=crop&auto=format",
-    category: "Infrastructure"
-  },
-  {
-    title: "Maiduguri Solar Electrification",
-    status: "Completed",
-    contractor: "SolarWave Africa",
-    amount: "₦10B",
-    location: "Borno",
-    progress: 100,
-    image: "https://images.unsplash.com/photo-1573652636608-d5e30b3dcb06?w=400&h=250&fit=crop&auto=format",
-    category: "Energy"
-  },
-  {
-    title: "Ibadan Inland Dry Port",
-    status: "Planning",
-    contractor: "NSC & Partners",
-    amount: "₦50B",
-    location: "Oyo",
-    progress: 10,
-    image: "https://images.unsplash.com/photo-1559734840-9e57d5aa4bfa?w=400&h=250&fit=crop&auto=format",
-    category: "Logistics"
-  },
-  {
-    title: "Awka Smart City Project",
-    status: "Ongoing",
-    contractor: "Anambra Smart Dev",
-    amount: "₦25B",
-    location: "Anambra",
-    progress: 45,
-    image: "https://images.unsplash.com/photo-1584277268944-3cfe06e3a1f0?w=400&h=250&fit=crop&auto=format",
-    category: "Urban Development"
-  },
-  {
-    title: "Sokoto Irrigation Modernization",
-    status: "Delayed",
-    contractor: "AgroPro Africa",
-    amount: "₦12B",
-    location: "Sokoto",
-    progress: 35,
-    image: "https://images.unsplash.com/photo-1612182069333-7f17bc4b0c67?w=400&h=250&fit=crop&auto=format",
-    category: "Agriculture"
-  },
-  {
-    title: "Calabar Deep Seaport Upgrade",
-    status: "Ongoing",
-    contractor: "NigerDock",
-    amount: "₦60B",
-    location: "Cross River",
-    progress: 50,
-    image: "https://images.unsplash.com/photo-1616571688964-f776d8f3bb1c?w=400&h=250&fit=crop&auto=format",
-    category: "Maritime"
-  }
 ];
 
 const statusColors: { [key: string]: string } = {

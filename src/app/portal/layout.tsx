@@ -200,7 +200,7 @@ function SidebarNav({ isCollapsed, setIsCollapsed }: { isCollapsed: boolean; set
           <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'} mb-3`}>
             <div className="relative flex-shrink-0">
               <div className="w-8 h-8 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center shadow-sm transition-all duration-300">
-                <span className="text-white text-xs font-semibold">JD</span>
+                <span className="text-white text-xs font-semibold">UO</span>
               </div>
               <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full transition-all duration-300"></div>
             </div>
