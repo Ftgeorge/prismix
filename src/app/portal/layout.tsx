@@ -99,7 +99,7 @@ function SidebarNav({ isCollapsed, setIsCollapsed }: { isCollapsed: boolean; set
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <div 
-              className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+              className={`h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
                 isCollapsed ? 'cursor-pointer hover:bg-slate-100 transition-colors duration-200' : ''
               }`}
               onClick={isCollapsed ? () => setIsCollapsed(false) : undefined}
@@ -200,7 +200,7 @@ function SidebarNav({ isCollapsed, setIsCollapsed }: { isCollapsed: boolean; set
           <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'} mb-3`}>
             <div className="relative flex-shrink-0">
               <div className="w-8 h-8 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center shadow-sm transition-all duration-300">
-                <span className="text-white text-xs font-semibold">JD</span>
+                <span className="text-white text-xs font-semibold">UO</span>
               </div>
               <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full transition-all duration-300"></div>
             </div>

@@ -1,9 +1,8 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MapPin, ChevronLeft, ChevronRight, Building2, DollarSign } from "lucide-react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { MapPin, ChevronLeft, ChevronRight, Building2 } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const featuredProjects = [
   {
@@ -36,98 +35,7 @@ const featuredProjects = [
     image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=250&fit=crop&auto=format",
     category: "Infrastructure"
   },
-  {
-    title: "Kano Solar Grid Initiative",
-    status: "Ongoing",
-    contractor: "GreenTech NG",
-    amount: "₦15B",
-    location: "Kano",
-    progress: 55,
-    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=250&fit=crop&auto=format",
-    category: "Energy"
-  },
-  {
-    title: "Port Harcourt Bridge Construction",
-    status: "Planning",
-    contractor: "Setraco Nigeria Ltd",
-    amount: "₦45B",
-    location: "Rivers",
-    progress: 15,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop&auto=format",
-    category: "Infrastructure"
-  },
-  {
-    title: "Kaduna Airport Expansion",
-    status: "Ongoing",
-    contractor: "Reynolds Construction",
-    amount: "₦35B",
-    location: "Kaduna",
-    progress: 78,
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=250&fit=crop&auto=format",
-    category: "Transportation"
-  },
-  {
-    title: "Benin City Smart Drainage Project",
-    status: "Ongoing",
-    contractor: "EdoWorks Engineering",
-    amount: "₦18B",
-    location: "Edo",
-    progress: 60,
-    image: "https://images.unsplash.com/photo-1565103031652-97ff53f2b1fc?w=400&h=250&fit=crop&auto=format",
-    category: "Infrastructure"
-  },
-  {
-    title: "Maiduguri Solar Electrification",
-    status: "Completed",
-    contractor: "SolarWave Africa",
-    amount: "₦10B",
-    location: "Borno",
-    progress: 100,
-    image: "https://images.unsplash.com/photo-1573652636608-d5e30b3dcb06?w=400&h=250&fit=crop&auto=format",
-    category: "Energy"
-  },
-  {
-    title: "Ibadan Inland Dry Port",
-    status: "Planning",
-    contractor: "NSC & Partners",
-    amount: "₦50B",
-    location: "Oyo",
-    progress: 10,
-    image: "https://images.unsplash.com/photo-1559734840-9e57d5aa4bfa?w=400&h=250&fit=crop&auto=format",
-    category: "Logistics"
-  },
-  {
-    title: "Awka Smart City Project",
-    status: "Ongoing",
-    contractor: "Anambra Smart Dev",
-    amount: "₦25B",
-    location: "Anambra",
-    progress: 45,
-    image: "https://images.unsplash.com/photo-1584277268944-3cfe06e3a1f0?w=400&h=250&fit=crop&auto=format",
-    category: "Urban Development"
-  },
-  {
-    title: "Sokoto Irrigation Modernization",
-    status: "Delayed",
-    contractor: "AgroPro Africa",
-    amount: "₦12B",
-    location: "Sokoto",
-    progress: 35,
-    image: "https://images.unsplash.com/photo-1612182069333-7f17bc4b0c67?w=400&h=250&fit=crop&auto=format",
-    category: "Agriculture"
-  },
-  {
-    title: "Calabar Deep Seaport Upgrade",
-    status: "Ongoing",
-    contractor: "NigerDock",
-    amount: "₦60B",
-    location: "Cross River",
-    progress: 50,
-    image: "https://images.unsplash.com/photo-1616571688964-f776d8f3bb1c?w=400&h=250&fit=crop&auto=format",
-    category: "Maritime"
-  }
 ];
-
 
 const statusColors: { [key: string]: string } = {
   "Ongoing": "bg-blue-500 text-white",
@@ -146,21 +54,45 @@ const progressColors: { [key: string]: string } = {
 export default function FeaturedProjectsSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
+  const [windowWidth, setWindowWidth] = useState<number>(1024); // Default value for SSR
+
+  useEffect(() => {
+    // Set initial window width on client side
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+    }
+
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setWindowWidth(window.innerWidth);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   useEffect(() => {
     const updateItemsPerView = () => {
-      if (window.innerWidth < 640) {
-        setItemsPerView(1);
-      } else if (window.innerWidth < 1024) {
-        setItemsPerView(2);
-      } else {
-        setItemsPerView(3);
+      if (typeof window !== "undefined") {
+        if (window.innerWidth < 640) {
+          setItemsPerView(1);
+        } else if (window.innerWidth < 1024) {
+          setItemsPerView(2);
+        } else {
+          setItemsPerView(3);
+        }
       }
     };
 
     updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
-    return () => window.removeEventListener('resize', updateItemsPerView);
+    
+    if (typeof window !== "undefined") {
+      window.addEventListener('resize', updateItemsPerView);
+      return () => window.removeEventListener('resize', updateItemsPerView);
+    }
   }, []);
 
   const totalSlides = Math.ceil(featuredProjects.length / itemsPerView);
@@ -283,14 +215,14 @@ export default function FeaturedProjectsSlider() {
 
                               {/* Project Title */}
                               <h3 className="text-sm xs:text-base lg:text-sm xl:text-lg font-semibold text-gray-900 mb-1 xs:mb-2 leading-snug line-clamp-1 xs:line-clamp-1 lg:line-clamp-1">
-                                {truncateText(project.title, window.innerWidth < 640 ? 35 : 50)}
+                                {truncateText(project.title, windowWidth < 640 ? 35 : 50)}
                               </h3>
 
                               {/* Contractor and Amount */}
                               <div className="flex flex-row xs:items-center justify-between text-sm lg:text-xs xl:text-sm text-gray-700 gap-1 xs:gap-0">
                                 <div className="flex items-center gap-1 xs:gap-2">
                                   <Building2 className="w-3 h-3 xs:w-4 xs:h-4 lg:size-3 xl:size-4 text-gray-400" />
-                                  <span>{truncateText(project.contractor, window.innerWidth < 640 ? 18 : 24)}</span>
+                                  <span>{truncateText(project.contractor, windowWidth < 640 ? 18 : 24)}</span>
                                 </div>
                                 <div className="flex items-center gap-1 xs:gap-2">
                                   <span className="font-semibold">{project.amount}</span>
