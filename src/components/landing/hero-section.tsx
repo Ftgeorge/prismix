@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Search, MapPin, Calendar, Filter, ArrowRight, ChevronDown, Building, Target, AlertCircle, Shield, Users, Eye, CheckCircle, Sliders } from "lucide-react";
+import { RequestDemoButton } from "../request-demo";
 
 // Animation configuration
 const fadeInUp = {
@@ -184,7 +185,7 @@ export default function HeroSection() {
                                     </span>
                                 </h1>
                                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight -mt-1 sm:-mt-2 md:-mt-3 lg:-mt-2 xl:-mt-3 2xl:-mt-4">
-                                    <span className="text-white"> for Governments</span>
+                                    <span className="text-white"> for the Government</span>
                                 </h1>
                             </div>
 
@@ -192,7 +193,9 @@ export default function HeroSection() {
                             <p className="text-sm sm:text-base md:text-lg lg:text-base xl:text-lg 2xl:text-xl text-gray-200 leading-relaxed max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl mx-auto px-2 sm:px-4 md:px-0">
                                 Track projects. Build accountability. Empowering citizens with transparency tools to monitor government activities and ensure responsible governance.
                             </p>
-
+                           <div className="flex justify-center">
+                           <RequestDemoButton />
+                           </div>
                             {/* Search Section */}
                             <div className="max-w-3xl sm:max-w-4xl md:max-w-5xl lg:max-w-3xl xl:max-w-5xl mx-auto mt-6 sm:mt-8 md:mt-10 lg:mt-8 xl:mt-10 2xl:mt-12">
                                 {/* Mobile Simple Search Bar */}
