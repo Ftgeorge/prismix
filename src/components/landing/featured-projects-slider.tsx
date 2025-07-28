@@ -2,8 +2,15 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, ChevronLeft, ChevronRight, Building2, DollarSign } from "lucide-react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+
+const [windowWidth, setWindowWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 1024);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
 const featuredProjects = [
   {
@@ -283,7 +290,7 @@ export default function FeaturedProjectsSlider() {
 
                               {/* Project Title */}
                               <h3 className="text-sm xs:text-base lg:text-sm xl:text-lg font-semibold text-gray-900 mb-1 xs:mb-2 leading-snug line-clamp-1 xs:line-clamp-1 lg:line-clamp-1">
-                                {truncateText(project.title, window.innerWidth < 640 ? 35 : 50)}
+                                {truncateText(project.title, windowWidth < 640 ? 35 : 50)}
                               </h3>
 
                               {/* Contractor and Amount */}
