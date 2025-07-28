@@ -9,15 +9,15 @@ import { Camera, User, Mail, Lock, Bell, Shield, CheckCircle } from "lucide-reac
 export function ProfileSettings() {
   const [avatar, setAvatar] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    firstName: "James",
-    lastName: "Wilson",
-    email: "james.wilson@email.com",
-    phone: "+1 (555) 123-4567",
+    firstName: "Ugochukwu",
+    lastName: "Okoroafor",
+    email: "ugochukwu.okoroafor@abiastate.gov.ng",
+    phone: "07013133065",
     newPassword: "",
     confirmPassword: "",
     emailNotifications: true,
     smsNotifications: false,
-    pushNotifications: true
+    pushNotifications: true,
   });
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 

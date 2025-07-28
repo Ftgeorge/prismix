@@ -5,35 +5,55 @@ import { MessageSquare, Clock, CheckCircle, AlertCircle, Plus, Filter, Search } 
 const feedbacks = [
   { 
     id: 1,
-    title: "Abandoned road in Agege", 
-    project: "Agege Road Rehab", 
+    title: "Abandoned road in Umuahia South", 
+    project: "Old Umuahia Road Rehabilitation", 
     status: "Open", 
     timestamp: "2025-07-10", 
-    response: "Received. Under review by engineering team. Expected resolution timeline: 2-3 weeks.",
+    response: "Received. Under review by Ministry of Works. Expected resolution timeline: 2-3 weeks.",
     priority: "High",
     category: "Infrastructure"
   },
   { 
     id: 2,
-    title: "Non-functional borehole", 
-    project: "Ogun Water Project", 
+    title: "Non-functional solar-powered borehole", 
+    project: "Aba Urban Water Revitalization", 
     status: "Resolved", 
     timestamp: "2025-06-22", 
-    response: "Issue fixed by contractor. Water flow restored to normal capacity.",
+    response: "Issue addressed by contractor. Borehole fully operational.",
     priority: "Medium",
     category: "Water Supply"
   },
   { 
     id: 3,
-    title: "Street lighting installation delay", 
-    project: "Lagos Street Lighting", 
+    title: "Delay in streetlight activation", 
+    project: "Arochukwu Smart Street Lighting Project", 
     status: "In Progress", 
     timestamp: "2025-07-08", 
-    response: "Installation crew deployed. 60% completion achieved.",
+    response: "Installation team deployed. 60% of lights currently functional.",
     priority: "Low",
     category: "Utilities"
   },
-];
+  { 
+    id: 4,
+    title: "Flooding around Ariaria area", 
+    project: "Ariaria Flood Control Drainage Phase 1", 
+    status: "Open", 
+    timestamp: "2025-07-20", 
+    response: "Preliminary assessment complete. Excavation to begin next week.",
+    priority: "High",
+    category: "Environment"
+  },
+  { 
+    id: 5,
+    title: "Inaccessible school road", 
+    project: "Nsulu Community School Access Road", 
+    status: "In Progress", 
+    timestamp: "2025-07-18", 
+    response: "Grading and leveling ongoing. Completion expected in 10 days.",
+    priority: "Medium",
+    category: "Education"
+  }
+]
 
 function getStatusIcon(status: string) {
   switch (status) {

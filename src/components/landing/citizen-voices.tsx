@@ -5,36 +5,44 @@ import { Star, Quote, ArrowRight } from "lucide-react";
 
 const voices = [
   {
-    name: "Aisha B.",
-    title: "Community Leader",
-    feedback: "I reported an abandoned school and got a response in days! Prism is changing the game for real civic engagement.",
-    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+    name: "Adaeze N.",
+    title: "Community Organizer",
+    feedback:
+      "I reported a broken bridge and got feedback within days. Prism truly empowers our voices!",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010",
     rating: 5,
-    location: "Lagos, Nigeria"
+    location: "Enugu, Nigeria",
   },
   {
-    name: "Chinedu O.",
-    title: "Local Business Owner",
-    feedback: "Finally, a platform where citizens can see real project progress and hold officials accountable. Transparency at its finest!",
-    avatar: "https://randomuser.me/api/portraits/men/45.jpg",
+    name: "Ifeanyi U.",
+    title: "Local Trader",
+    feedback:
+      "For the first time, I feel like someone is actually listening to our community’s issues.",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010",
     rating: 5,
-    location: "Abuja, Nigeria"
+    location: "Onitsha, Nigeria",
   },
   {
-    name: "Fatima S.",
-    title: "Student Activist",
-    feedback: "I love the transparency. My feedback was verified and acted upon. This is democracy in action!",
-    avatar: "https://randomuser.me/api/portraits/women/22.jpg",
+    name: "Chinonso M.",
+    title: "Youth Advocate",
+    feedback:
+      "This is the kind of civic tech we need. It’s easy to use and gets real results.",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010",
     rating: 5,
-    location: "Kano, Nigeria"
+    location: "Awka, Nigeria",
   },
   {
-    name: "Tunde A.",
-    title: "Tech Professional",
-    feedback: "The badge system makes it fun to participate. I feel like my voice matters and creates real change!",
-    avatar: "https://randomuser.me/api/portraits/men/33.jpg",
+    name: "Obinna K.",
+    title: "Tech Enthusiast",
+    feedback:
+      "The gamification makes engagement fun. I log in daily just to check project progress!",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010",
     rating: 5,
-    location: "Ibadan, Nigeria"
+    location: "Umuahia, Nigeria",
   },
 ];
 
@@ -45,7 +53,7 @@ export default function CitizenVoices() {
         {/* Header */}
         <div className="text-center">
           <h2 className="section-header text-xl xs:text-2xl lg:text-2xl xl:text-3xl font-bold text-center mb-2 xs:mb-3 sm:mb-6 md:mb-8 lg:mb-2 xl:mb-8">
-            Voices from the Community
+            Voices from the Abians 
           </h2>
           <p className="text-xs xs:text-sm sm:text-lg md:text-xl lg:text-sm xl:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed px-1 xs:px-2 sm:px-0">
             Real stories from citizens creating meaningful change in their communities through civic engagement
@@ -74,7 +82,7 @@ export default function CitizenVoices() {
                     <img
                       src={voice.avatar}
                       alt={voice.name}
-                      className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-slate-200 shadow-md group-hover:border-slate-300 transition-all duration-300"
+                      className="rounded-full object-cover border-2 border-slate-200 shadow-md group-hover:border-slate-300 transition-all duration-300"
                     />
                   </Avatar>
                 </div>

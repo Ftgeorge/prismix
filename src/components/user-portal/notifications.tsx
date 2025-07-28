@@ -17,7 +17,7 @@ const mockNotifications: Notification[] = [
   {
     id: 1,
     type: "update",
-    message: "Project 'Enugu Water Project' status changed to Ongoing.",
+    message: "Project 'Umuahia Road Expansion' status changed to Ongoing.",
     time: "Just now",
     read: false,
     starred: false,
@@ -26,7 +26,7 @@ const mockNotifications: Notification[] = [
   {
     id: 2,
     type: "info",
-    message: "New feedback received on 'Kano Solar Grid Initiative'.",
+    message: "New feedback received on 'Ariaria Smart Power Project'.",
     time: "2 hours ago",
     read: false,
     starred: true,
@@ -44,12 +44,48 @@ const mockNotifications: Notification[] = [
   {
     id: 4,
     type: "warning",
-    message: "Project 'Port Harcourt Bridge Construction' is delayed.",
+    message: "Project 'Port Harcourt Road Rehabilitation (Aba)' is delayed.",
     time: "2 days ago",
     read: true,
     starred: false,
     sender: "Project Alerts"
   },
+  {
+    id: 5,
+    type: "update",
+    message: "New photos uploaded for 'Umuahia-Afikpo Road Dualization'.",
+    time: "3 days ago",
+    read: false,
+    starred: false,
+    sender: "Project Media"
+  },
+  {
+    id: 6,
+    type: "info",
+    message: "Town hall feedback received on 'Osusu Road Drainage System'.",
+    time: "4 days ago",
+    read: true,
+    starred: false,
+    sender: "Community"
+  },
+  {
+    id: 7,
+    type: "success",
+    message: "'Abia Innovation Hub' successfully commissioned.",
+    time: "1 week ago",
+    read: true,
+    starred: true,
+    sender: "Governor's Office"
+  },
+  {
+    id: 8,
+    type: "warning",
+    message: "'Bende-Itumbauzo Road' construction may face weather delays.",
+    time: "1 week ago",
+    read: false,
+    starred: false,
+    sender: "Project Alerts"
+  }
 ];
 
 function iconForType(type: string) {
