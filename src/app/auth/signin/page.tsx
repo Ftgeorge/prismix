@@ -44,15 +44,16 @@ export default function SignIn() {
     <div className="min-h-screen flex items-center justify-center bg-[#F9FAFB] w-full">
       <div className='w-full md:w-1/2 h-full'>
         <div className="bg-white p-6 lg:p-3 xl:p-8 rounded-2xl shadow-xl w-full max-w-xs lg:max-w-[250px] xl:max-w-sm 2xl:max-w-md mx-auto">
+          
           <div className="flex justify-center mb-3">
             <div className="relative h-6 md:h-5 lg:h-6 xl:h-8 2xl:h-10 flex items-center justify-center">
-              <Image src="/logo.png" alt='prism logo' className='w-full h-full' width={100} height={100} />
+              <img src="https://yzub7xjzmf.ufs.sh/f/p5WCAJ95HVcjpWCwrj295HVcjyE3Xs0mkUNIQflGw8evWqRA" alt='prism logo' className='w-full h-full' width={100} height={100} />
             </div>
           </div>
 
-          <h1 className="text-lg lg:text-base xl:text-xl 2xl:text-2xl font-bold text-black text-center mb-0 lg:mb-0 xl:mb-0 2xl:mb-1">Welcome to Prism</h1>
+          <h1 className="text-lg lg:text-base xl:text-xl 2xl:text-2xl font-bold text-black text-center mb-0 lg:mb-0 xl:mb-0 2xl:mb-1">Sign in to Prism</h1>
           <h2 className="text-[11px] lg:text-[9px] xl:text-[13px] 2xl:text-base font-normal text-[#4B5563] mb-4 lg:mb-3 xl:mb-6 2xl:mb-6 text-center">
-            Empowering Transparency and Citizen Engagement
+            Monitoring and Evaluation for Abia State
           </h2>
 
           <div className="space-y-1">
@@ -152,21 +153,20 @@ export default function SignIn() {
             </div>
 
             <div className="flex gap-3">
-              <button
-                type="button"
-                className="w-full flex items-center justify-center border border-gray-300 rounded-md 2xl:rounded-lg h-8 xl:h-9 2xl:h-10 bg-white hover:bg-gray-50 transition-colors"
-                onClick={() => alert('Google login would be implemented here')}
-              >
-                <Image src="/google.png" alt='google logo' className='size-4 lg:size-3 xl:size-5 2xl:size-5' width={40} height={40} />
-              </button>
-              <button
-                type="button"
-                className="w-full flex items-center justify-center border border-gray-300 rounded-md 2xl:rounded-lg h-8 xl:h-9 2xl:h-10 bg-white hover:bg-gray-50 transition-colors"
-                onClick={() => alert('Facebook login would be implemented here')}
-              >
-                <Image src="/facebook.png" alt='facebook logo' className='size-6 lg:size-5 xl:size-8 2xl:size-8' width={40} height={40} />
+            <button
+  type="button"
+  className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md 2xl:rounded-lg h-8 xl:h-9 2xl:h-10 bg-white hover:bg-gray-50 transition-colors"
+  onClick={() => alert('Microsoft login would be implemented here')}
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" width="20" height="20">
+    <rect width="10" height="10" fill="#F35325" />
+    <rect x="12" width="10" height="10" fill="#81BC06" />
+    <rect y="12" width="10" height="10" fill="#05A6F0" />
+    <rect x="12" y="12" width="10" height="10" fill="#FFBA08" />
+  </svg>
+  <span className="text-xs xl:text-sm 2xl:text-base text-gray-700 font-medium">Continue with Microsoft</span>
+</button>
 
-              </button>
             </div>
           </div>
 
@@ -175,9 +175,8 @@ export default function SignIn() {
             <button
               type="button"
               className="text-[#008753] hover:underline font-medium"
-              onClick={() => router.push('/auth/signup')}
             >
-              Sign up
+              Request Access
             </button>
           </p>
         </div>
@@ -185,7 +184,7 @@ export default function SignIn() {
 
       <div className='hidden md:block relative w-1/2 h-screen bg-red-200'>
         <Image src="/auth.png" alt='signin illustration' className='w-full h-full object-cover' width={500} height={500} />
-        <div className='absolute inset-0 bg-[#00875380] h-full w-full flex flex-col items-center justify-center'>
+        <div className='absolute inset-0 bg-[#008753e6] h-full w-full flex flex-col items-center justify-center'>
           <AnimatedOverlayTexts />
         </div>
       </div>

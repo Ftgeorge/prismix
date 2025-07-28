@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const OVERLAY_SETS = [
   [
-    "Welcome to Prismix.",
+    "Welcome to Prism.",
     "Empowering communities through transparent governance.",
     "Your journey to better civic engagement starts here.",
     "Access public services with ease and confidence.",
