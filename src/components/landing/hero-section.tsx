@@ -180,17 +180,17 @@ export default function HeroSection() {
                             <div className="space-y-1 sm:space-y-2 md:space-y-3 lg:space-y-2 xl:space-y-3 2xl:space-y-4">
                                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight">
                                     <span className="text-[#008753]">
-                                        Shine a Light
+                                        Monitoring and Evaluation
                                     </span>
                                 </h1>
                                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight -mt-1 sm:-mt-2 md:-mt-3 lg:-mt-2 xl:-mt-3 2xl:-mt-4">
-                                    <span className="text-white"> on Governance</span>
+                                    <span className="text-white"> for Governments</span>
                                 </h1>
                             </div>
 
                             {/* Subtitle */}
                             <p className="text-sm sm:text-base md:text-lg lg:text-base xl:text-lg 2xl:text-xl text-gray-200 leading-relaxed max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl mx-auto px-2 sm:px-4 md:px-0">
-                                Track projects. Expose corruption. Build accountability. Empowering citizens with transparency tools to monitor government activities and ensure responsible governance.
+                                Track projects. Build accountability. Empowering citizens with transparency tools to monitor government activities and ensure responsible governance.
                             </p>
 
                             {/* Search Section */}
