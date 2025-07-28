@@ -105,7 +105,7 @@ function SidebarNav({ isCollapsed, setIsCollapsed }: { isCollapsed: boolean; set
               onClick={isCollapsed ? () => setIsCollapsed(false) : undefined}
               title={isCollapsed ? "Expand sidebar" : undefined}
             >
-              <Image src={"/logo.png"} alt="Logo" width={40} height={40} className="size-full" />
+              <img src="https://yzub7xjzmf.ufs.sh/f/p5WCAJ95HVcjpWCwrj295HVcjyE3Xs0mkUNIQflGw8evWqRA" alt="Logo" width={100} height={100} className="size-full" />
             </div>
             <div className={`transition-all duration-500 ease-in-out min-w-0 ${
               isCollapsed 
@@ -209,7 +209,7 @@ function SidebarNav({ isCollapsed, setIsCollapsed }: { isCollapsed: boolean; set
                 ? 'opacity-0 scale-95 translate-x-2 w-0 overflow-hidden' 
                 : 'opacity-100 scale-100 translate-x-0 w-auto'
             }`}>
-              <p className="text-sm font-semibold text-slate-900 truncate whitespace-nowrap">James Doe</p>
+              <p className="text-sm font-semibold text-slate-900 truncate whitespace-nowrap">Ugochukwu Okoroafor</p>
               <p className="text-xs text-slate-500 whitespace-nowrap">Verified Citizen</p>
             </div>
           </div>
