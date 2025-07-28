@@ -4,14 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, ChevronLeft, ChevronRight, Building2, DollarSign } from "lucide-react";
 import { useState, useEffect } from "react";
 
-const [windowWidth, setWindowWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 1024);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
 const featuredProjects = [
   {
     title: "Lagos-Ibadan Expressway Rehabilitation",
@@ -135,7 +127,6 @@ const featuredProjects = [
   }
 ];
 
-
 const statusColors: { [key: string]: string } = {
   "Ongoing": "bg-blue-500 text-white",
   "Completed": "bg-green-500 text-white",
@@ -153,21 +144,45 @@ const progressColors: { [key: string]: string } = {
 export default function FeaturedProjectsSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
+  const [windowWidth, setWindowWidth] = useState<number>(1024); // Default value for SSR
+
+  useEffect(() => {
+    // Set initial window width on client side
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+    }
+
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setWindowWidth(window.innerWidth);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   useEffect(() => {
     const updateItemsPerView = () => {
-      if (window.innerWidth < 640) {
-        setItemsPerView(1);
-      } else if (window.innerWidth < 1024) {
-        setItemsPerView(2);
-      } else {
-        setItemsPerView(3);
+      if (typeof window !== "undefined") {
+        if (window.innerWidth < 640) {
+          setItemsPerView(1);
+        } else if (window.innerWidth < 1024) {
+          setItemsPerView(2);
+        } else {
+          setItemsPerView(3);
+        }
       }
     };
 
     updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
-    return () => window.removeEventListener('resize', updateItemsPerView);
+    
+    if (typeof window !== "undefined") {
+      window.addEventListener('resize', updateItemsPerView);
+      return () => window.removeEventListener('resize', updateItemsPerView);
+    }
   }, []);
 
   const totalSlides = Math.ceil(featuredProjects.length / itemsPerView);
@@ -297,7 +312,7 @@ export default function FeaturedProjectsSlider() {
                               <div className="flex flex-row xs:items-center justify-between text-sm lg:text-xs xl:text-sm text-gray-700 gap-1 xs:gap-0">
                                 <div className="flex items-center gap-1 xs:gap-2">
                                   <Building2 className="w-3 h-3 xs:w-4 xs:h-4 lg:size-3 xl:size-4 text-gray-400" />
-                                  <span>{truncateText(project.contractor, window.innerWidth < 640 ? 18 : 24)}</span>
+                                  <span>{truncateText(project.contractor, windowWidth < 640 ? 18 : 24)}</span>
                                 </div>
                                 <div className="flex items-center gap-1 xs:gap-2">
                                   <span className="font-semibold">{project.amount}</span>
