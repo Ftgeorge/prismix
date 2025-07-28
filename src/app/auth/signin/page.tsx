@@ -5,6 +5,7 @@ import AnimatedOverlayTexts from './AnimatedOverlayTexts';
 import { User, Shield, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 export default function SignIn() {
   const router = useRouter();
@@ -29,17 +30,28 @@ export default function SignIn() {
   ];
 
   const selectedUserType = userTypes.find(type => type.value === userType) || userTypes[0];
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (userType === 'official') {
-      alert('Login for government officials is not available yet.');
-      return;
+  
+    if (
+      email.trim().toLowerCase() === 'ugochukwu.okoroafor@abiastate.gov.ng' &&
+      password === 'ugochukwu.123'
+    ) {
+      toast.success("Login Successful", {
+        description: "Welcome back, Ugochukwu!",
+      });
+  
+      setTimeout(() => {
+        router.push('/portal');
+      }, 1000);
+    } else {
+      toast.error("Login Failed", {
+        description: "Invalid email or password. Please try again.",
+      });
     }
-    // Citizen login: go to portal
-    router.push('/portal');
   };
-
+  
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F9FAFB] w-full">
       <div className='w-full md:w-1/2 h-full'>
@@ -156,7 +168,7 @@ export default function SignIn() {
             <button
   type="button"
   className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md 2xl:rounded-lg h-8 xl:h-9 2xl:h-10 bg-white hover:bg-gray-50 transition-colors"
-  onClick={() => alert('Microsoft login would be implemented here')}
+  onClick={() => alert('Contact the Abia State Government IT Adminstrator to implement the SAML and SSO')}
 >
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" width="20" height="20">
     <rect width="10" height="10" fill="#F35325" />

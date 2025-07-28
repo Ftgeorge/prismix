@@ -21,8 +21,8 @@ const mockActivity = [
   {
     id: 1,
     type: "followed",
-    project: "Lagos-Ibadan Expressway Rehabilitation",
-    time: "2 hours ago",
+    project: "Abia Tower of Peace Rehabilitation",
+    time: "3 hours ago",
     details: "You started following this project.",
     read: false,
     priority: "normal"
@@ -30,49 +30,104 @@ const mockActivity = [
   {
     id: 2,
     type: "feedback",
-    project: "Enugu Water Project",
-    time: "1 day ago",
-    details: "Your feedback received a response from the project team.",
+    project: "Aba Court Road Reconstruction",
+    time: "5 hours ago",
+    details: "Your report about potholes was acknowledged by the project team.",
     read: false,
     priority: "high"
   },
   {
     id: 3,
     type: "update",
-    project: "Abuja Light Rail Expansion",
-    time: "3 days ago",
-    details: "Project status updated to Completed. Final report available.",
-    read: true,
+    project: "Umuahia–Uzuakoli–Abiriba–Ohafia Road Rehabilitation",
+    time: "1 day ago",
+    details: "Project progress updated to 60%. Road resurfacing underway.",
+    read: false,
     priority: "normal"
   },
   {
     id: 4,
     type: "milestone",
-    project: "Kano Solar Grid Initiative",
-    time: "5 days ago",
-    details: "Project reached 75% completion milestone.",
+    project: "Osisioma–Ekeakpara Road Expansion",
+    time: "2 days ago",
+    details: "Completed bridge section over Ekeakpara River.",
     read: true,
     priority: "normal"
   },
   {
     id: 5,
-    type: "mention",
-    project: "Port Harcourt Road Network",
-    time: "1 week ago",
-    details: "You were mentioned in a comment by Sarah Johnson.",
+    type: "feedback",
+    project: "Omenuko Bridge Reconstruction",
+    time: "2 days ago",
+    details: "Your safety concern about missing guardrails has been forwarded.",
+    read: true,
+    priority: "high"
+  },
+  {
+    id: 6,
+    type: "update",
+    project: "Abia Tower of Peace Rehabilitation",
+    time: "3 days ago",
+    details: "Structural reinforcement phase completed.",
     read: true,
     priority: "normal"
   },
   {
-    id: 6,
-    type: "deadline",
-    project: "Kaduna Bridge Construction",
-    time: "1 week ago",
-    details: "Feedback deadline approaching in 2 days.",
+    id: 7,
+    type: "mention",
+    project: "Aba Court Road Reconstruction",
+    time: "3 days ago",
+    details: "You were tagged in a comment about traffic delays.",
     read: true,
+    priority: "normal"
+  },
+  {
+    id: 8,
+    type: "milestone",
+    project: "Umuahia–Uzuakoli–Abiriba–Ohafia Road Rehabilitation",
+    time: "4 days ago",
+    details: "50% of haulage works completed between Uzuakoli and Abiriba.",
+    read: true,
+    priority: "normal"
+  },
+  {
+    id: 9,
+    type: "deadline",
+    project: "Osisioma–Ekeakpara Road Expansion",
+    time: "5 days ago",
+    details: "Submission deadline for community input in 3 days.",
+    read: false,
     priority: "high"
-  }
+  },
+  {
+    id: 10,
+    type: "update",
+    project: "Omenuko Bridge Reconstruction",
+    time: "6 days ago",
+    details: "Piling works delayed due to rainy weather conditions.",
+    read: false,
+    priority: "normal"
+  },
+  {
+    id: 11,
+    type: "followed",
+    project: "Umuahia–Uzuakoli–Abiriba–Ohafia Road Rehabilitation",
+    time: "1 week ago",
+    details: "You started following this project.",
+    read: true,
+    priority: "normal"
+  },
+  {
+    id: 12,
+    type: "milestone",
+    project: "Abia Tower of Peace Rehabilitation",
+    time: "1 week ago",
+    details: "Facade restoration completed and painting commencing.",
+    read: true,
+    priority: "normal"
+  },
 ];
+
 
 export default function ActivityFeed() {
   const [activity, setActivity] = useState(mockActivity);
