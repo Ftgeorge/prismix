@@ -6,7 +6,6 @@ import { ProjectCategories } from "@/components/landing/project-categories";
 import CitizenVoices from "@/components/landing/citizen-voices";
 import NewsletterSection from "@/components/landing/newsletter-section";
 import FooterSection from "@/components/landing/footer-section";
-import Image from "next/image";
 
 export default function Home() {
   return (
